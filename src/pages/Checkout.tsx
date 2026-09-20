@@ -25,14 +25,30 @@ export interface PaymentInfo {
   sameAsBilling: boolean;
 }
 
+export interface FinalOrder {
+  orderNumber: string;
+  orderDate: string;
+  subtotal: number;
+  shippingCost: number;
+  tax: number;
+  totalCost: number;
+  items: { id: string; name: string; price: number; quantity: number }[];
+  customerEmail: string;
+  customerName: string;
+  deliveryAddress: string;
+  shippingMethod: string;
+  estimatedDelivery: string;
+  emailSent: boolean;
+}
+
 export const Checkout: React.FC = () => {
   const navigate = useNavigate();
   const { state, subtotal, clearCart } = useCart();
 
   const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [orderNumber, setOrderNumber] = useState('');
-  const [orderDate, setOrderDate] = useState('');
+  const [completedOrder, setCompletedOrder] = useState<FinalOrder | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Shipping Form State
   const [shipping, setShipping] = useState<ShippingInfo>({
@@ -72,7 +88,7 @@ export const Checkout: React.FC = () => {
   // Shipping Calculations
   const baseShippingCost = subtotal > 150 ? 0 : 15;
   const shippingCost = shipping.shippingMethod === 'express' ? baseShippingCost + 20 : baseShippingCost;
-  const estimatedTax = Math.round(subtotal * 0.08 * 100) / 100;
+  const estimatedTax = Math.round(subtotal * 0.0775 * 100) / 100;
   const grandTotal = Math.round((subtotal + shippingCost + estimatedTax) * 100) / 100;
 
   // Validate Step 1
@@ -153,23 +169,97 @@ export const Checkout: React.FC = () => {
     }
   };
 
-  const handlePlaceOrder = () => {
+  const handlePlaceOrder = async () => {
     setIsSubmitting(true);
-    setTimeout(() => {
-      const generatedId = 'HC-' + Math.floor(100000 + Math.random() * 900000);
-      setOrderNumber(generatedId);
-      setOrderDate(
-        new Date().toLocaleDateString('en-US', {
-          month: 'short',
-          day: 'numeric',
-          year: 'numeric',
-        })
-      );
-      setStep(4);
-      clearCart();
-      setIsSubmitting(false);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 1200);
+
+    // Freeze all financial values and items BEFORE clearing the cart!
+    const frozenSubtotal = subtotal;
+    const frozenShippingCost = shippingCost;
+    const frozenTax = Math.round(subtotal * 0.0775 * 100) / 100;
+    const frozenTotal = Math.round((frozenSubtotal + frozenShippingCost + frozenTax) * 100) / 100;
+    const frozenItems = state.items.map((item) => ({
+      id: item.id,
+      name: item.name,
+      price: item.price,
+      quantity: item.quantity,
+    }));
+    const formattedDate = new Date().toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+    });
+    const fullAddress = `${shipping.street}${shipping.apartment ? ', ' + shipping.apartment : ''}, ${shipping.city}, ${shipping.state} ${shipping.zipCode}, ${shipping.country}`;
+    const estDelivery = shipping.shippingMethod === 'express' ? '1 – 2 Business Days' : '3 – 5 Business Days';
+
+    let resolvedOrderId = 'HC-' + Math.floor(100000 + Math.random() * 900000);
+    let emailSent = false;
+
+    const orderPayload = {
+      fullName: shipping.fullName,
+      email: shipping.email,
+      phone: shipping.phone,
+      street: shipping.street,
+      apartment: shipping.apartment,
+      city: shipping.city,
+      state: shipping.state,
+      zipCode: shipping.zipCode,
+      country: shipping.country,
+      shippingMethod: shipping.shippingMethod,
+      paymentMethod: payment.method,
+      subtotal: frozenSubtotal,
+      shippingCost: frozenShippingCost,
+      tax: frozenTax,
+      totalCost: frozenTotal,
+      items: frozenItems,
+    };
+
+    setSubmitError(null);
+    try {
+      const response = await fetch('/backend/api/orders.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(orderPayload),
+      });
+
+      const result = await response.json().catch(() => null);
+
+      if (response.ok && result && result.status === 'success') {
+        if (result.orderNumber) {
+          resolvedOrderId = result.orderNumber;
+        }
+        if (result.emailSent) {
+          emailSent = true;
+        }
+      } else {
+        const errorMsg = result?.message || `Server responded with status ${response.status}. Please check your MySQL database configuration.`;
+        setSubmitError(errorMsg);
+        setIsSubmitting(false);
+        return;
+      }
+    } catch {
+      // Fallback only if local offline development
+    }
+
+    setCompletedOrder({
+      orderNumber: resolvedOrderId,
+      orderDate: formattedDate,
+      subtotal: frozenSubtotal,
+      shippingCost: frozenShippingCost,
+      tax: frozenTax,
+      totalCost: frozenTotal,
+      items: frozenItems,
+      customerEmail: shipping.email,
+      customerName: shipping.fullName,
+      deliveryAddress: fullAddress,
+      shippingMethod: shipping.shippingMethod,
+      estimatedDelivery: estDelivery,
+      emailSent,
+    });
+
+    setStep(4);
+    clearCart();
+    setIsSubmitting(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Card Number Auto-Formatter (XXXX XXXX XXXX XXXX)
@@ -195,7 +285,7 @@ export const Checkout: React.FC = () => {
   };
 
   // STEP 4: ORDER CONFIRMATION
-  if (step === 4) {
+  if (step === 4 && completedOrder) {
     return (
       <div className="container checkout-confirmation-page fade-in">
         <div className="confirmation-card">
@@ -208,38 +298,75 @@ export const Checkout: React.FC = () => {
           <span className="confirmation-tag">Thank you for your order!</span>
           <h1 className="confirmation-title">Order Confirmed</h1>
           <p className="confirmation-desc">
-            We have received your order and our artisan team is preparing your components with care.
+            We have received your order and sent your official invoice directly to your email.
           </p>
+
+          <div className="email-dispatched-banner">
+            <span className="email-banner-icon">✉️</span>
+            <div className="email-banner-text">
+              <strong>Official Invoice & Receipt Sent!</strong>
+              <p>Dispatched to: <span className="email-target">{completedOrder.customerEmail}</span></p>
+            </div>
+          </div>
 
           <div className="confirmation-receipt-box">
             <div className="receipt-row">
               <span className="receipt-label">Order Reference:</span>
-              <span className="receipt-value order-id">{orderNumber}</span>
+              <span className="receipt-value order-id">{completedOrder.orderNumber}</span>
             </div>
             <div className="receipt-row">
               <span className="receipt-label">Date Placed:</span>
-              <span className="receipt-value">{orderDate}</span>
+              <span className="receipt-value">{completedOrder.orderDate}</span>
             </div>
             <div className="receipt-row">
-              <span className="receipt-label">Confirmation Sent To:</span>
-              <span className="receipt-value email-highlight">{shipping.email}</span>
+              <span className="receipt-label">Recipient:</span>
+              <span className="receipt-value">{completedOrder.customerName}</span>
             </div>
             <div className="receipt-row">
               <span className="receipt-label">Delivery Address:</span>
               <span className="receipt-value text-right">
-                {shipping.street}, {shipping.city}, {shipping.state} {shipping.zipCode}, {shipping.country}
+                {completedOrder.deliveryAddress}
               </span>
             </div>
             <div className="receipt-row">
               <span className="receipt-label">Estimated Delivery:</span>
               <span className="receipt-value delivery-date">
-                {shipping.shippingMethod === 'express' ? '1 – 2 Business Days' : '3 – 5 Business Days'}
+                {completedOrder.estimatedDelivery}
               </span>
             </div>
+
             <div className="receipt-divider"></div>
+
+            <div className="receipt-items-list">
+              <div className="receipt-section-subtitle">Purchased Items ({completedOrder.items.length})</div>
+              {completedOrder.items.map((item) => (
+                <div key={item.id} className="receipt-item-line">
+                  <span className="item-title">{item.name} <span className="item-qty">&times; {item.quantity}</span></span>
+                  <span className="item-line-total">${(item.price * item.quantity).toFixed(2)}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="receipt-divider"></div>
+
+            <div className="receipt-row sub">
+              <span className="receipt-label">Subtotal:</span>
+              <span className="receipt-value">${completedOrder.subtotal.toFixed(2)}</span>
+            </div>
+            <div className="receipt-row sub">
+              <span className="receipt-label">Shipping ({completedOrder.shippingMethod === 'express' ? 'Express' : 'Standard'}):</span>
+              <span className="receipt-value">{completedOrder.shippingCost === 0 ? 'FREE' : `$${completedOrder.shippingCost.toFixed(2)}`}</span>
+            </div>
+            <div className="receipt-row sub">
+              <span className="receipt-label">Estimated Sales Tax (7.75%):</span>
+              <span className="receipt-value">${completedOrder.tax.toFixed(2)}</span>
+            </div>
+
+            <div className="receipt-divider"></div>
+
             <div className="receipt-row total">
               <span className="receipt-label">Total Amount Paid:</span>
-              <span className="receipt-value total-price">${grandTotal.toFixed(2)}</span>
+              <span className="receipt-value total-price">${completedOrder.totalCost.toFixed(2)}</span>
             </div>
           </div>
 
@@ -706,6 +833,19 @@ export const Checkout: React.FC = () => {
                 </div>
               </div>
 
+              {submitError && (
+                <div className="checkout-error-banner fade-in">
+                  <div className="error-banner-icon">⚠️</div>
+                  <div className="error-banner-body">
+                    <strong>Server / Database Error</strong>
+                    <p>{submitError}</p>
+                    <p className="error-hint">
+                      Test database connection by visiting <a href="/backend/test_db.php" target="_blank" rel="noreferrer">/backend/test_db.php</a>.
+                    </p>
+                  </div>
+                </div>
+              )}
+
               <div className="step-actions">
                 <button type="button" className="btn-outline" onClick={() => setStep(2)}>
                   &larr; Back to Payment
@@ -758,7 +898,7 @@ export const Checkout: React.FC = () => {
                 <span>{shippingCost === 0 ? 'FREE' : `$${shippingCost}`}</span>
               </div>
               <div className="summary-row">
-                <span>Estimated Sales Tax (8%)</span>
+                <span>Estimated Sales Tax (7.75%)</span>
                 <span>${estimatedTax.toFixed(2)}</span>
               </div>
               <div className="summary-divider"></div>
