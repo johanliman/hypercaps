@@ -17,7 +17,7 @@ export interface ShippingInfo {
 }
 
 export interface PaymentInfo {
-  method: 'card' | 'paypal' | 'applepay';
+  method: 'card' | 'applepay';
   cardName: string;
   cardNumber: string;
   expiry: string;
@@ -645,14 +645,6 @@ export const Checkout: React.FC = () => {
 
                 <button
                   type="button"
-                  className={`payment-tab-btn ${payment.method === 'paypal' ? 'active' : ''}`}
-                  onClick={() => setPayment({ ...payment, method: 'paypal' })}
-                >
-                  <span className="brand-pill">PayPal</span>
-                </button>
-
-                <button
-                  type="button"
                   className={`payment-tab-btn ${payment.method === 'applepay' ? 'active' : ''}`}
                   onClick={() => setPayment({ ...payment, method: 'applepay' })}
                 >
@@ -726,14 +718,6 @@ export const Checkout: React.FC = () => {
                 </div>
               )}
 
-              {payment.method === 'paypal' && (
-                <div className="alternative-payment-notice fade-in">
-                  <div className="alt-icon">🅿️</div>
-                  <h3>Connect to PayPal</h3>
-                  <p>You will be directed to PayPal to authorize payment securely upon reviewing your order.</p>
-                </div>
-              )}
-
               {payment.method === 'applepay' && (
                 <div className="alternative-payment-notice fade-in">
                   <div className="alt-icon"></div>
@@ -803,10 +787,8 @@ export const Checkout: React.FC = () => {
                       <p className="review-text">Expires: {payment.expiry || '12/28'}</p>
                       <p className="review-text">Cardholder: {payment.cardName}</p>
                     </>
-                  ) : payment.method === 'paypal' ? (
-                    <p className="review-text bold">PayPal Express Checkout</p>
                   ) : (
-                    <p className="review-text bold">Apple Pay</p>
+                    <p className="review-text bold"> Apple Pay</p>
                   )}
                   <p className="review-text delivery-method-tag">
                     {shipping.shippingMethod === 'express' ? '⚡ Express Priority Shipping' : '📦 Standard Courier Shipping'}

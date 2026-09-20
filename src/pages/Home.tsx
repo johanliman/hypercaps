@@ -1,9 +1,20 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { products, Category } from '../data/products';
 import { ProductCard } from '../components/ProductCard';
 
 export const Home: React.FC = () => {
+  const [searchParams] = useSearchParams();
+  const categoryParam = searchParams.get('category');
   const [selectedCategory, setSelectedCategory] = useState<Category | 'All'>('All');
+
+  useEffect(() => {
+    if (categoryParam && ['All', 'Keyboards', 'Keycaps', 'Switches'].includes(categoryParam)) {
+      setSelectedCategory(categoryParam as Category | 'All');
+      const element = document.getElementById('catalog-section');
+      element?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [categoryParam]);
 
   const filteredProducts = useMemo(() => {
     if (selectedCategory === 'All') {

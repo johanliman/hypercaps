@@ -218,7 +218,7 @@ try {
 
         <div style='background: #fafafa; border-top: 1px solid #e5e5ea; padding: 20px 32px; text-align: center; font-size: 12px; color: #888;'>
           <p style='margin: 0;'>Hypercaps Enthusiast Keyboards & Custom Components</p>
-          <p style='margin: 4px 0 0 0;'>Questions about this invoice? Contact us at support@clickclack.infinityfree.me</p>
+          <p style='margin: 4px 0 0 0;'>Questions about this invoice? Contact us at <a href='mailto:johanliman@gmail.com' style='color: #2563eb; text-decoration: none;'>johanliman@gmail.com</a></p>
         </div>
       </div>
     </body>

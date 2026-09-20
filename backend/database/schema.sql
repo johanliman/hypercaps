@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS products (
     description TEXT,
     specs JSON,
     color VARCHAR(50) NOT NULL,
+    image_url TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -42,17 +43,26 @@ CREATE TABLE IF NOT EXISTS order_items (
     FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE
 );
 
--- Seed Initial Products
-INSERT INTO products (id, name, price, category, description, specs, color) VALUES
-('k1', 'Hyper-65 Graphite', 189.00, 'Keyboards', 'A premium 65% mechanical keyboard with a sleek aluminum frame and gasket mount design.', '["65% Layout", "Gasket Mount", "Hot-swappable PCB", "RGB Backlit"]', '#2d2d2d'),
-('k2', 'Frost TKL', 159.00, 'Keyboards', 'Minimalist Tenkeyless keyboard with a frosted polycarbonate case for smooth light diffusion.', '["TKL Layout", "Polycarbonate Case", "Hot-swappable", "White LEDs"]', '#e0e0e0'),
-('c1', 'Serenity Keycaps', 85.00, 'Keycaps', 'High-quality PBT dye-sub keycaps with a soothing pastel color palette.', '["PBT Material", "Cherry Profile", "128 Keys", "Dye-Sublimated"]', '#a2d2ff'),
-('c2', 'Midnight Bloom', 95.00, 'Keycaps', 'Dark-themed keycaps with floral accents, made from durable doubleshot ABS.', '["ABS Material", "OSA Profile", "135 Keys", "Doubleshot"]', '#3d348b'),
-('s1', 'Linear Velvets', 45.00, 'Switches', 'Ultra-smooth linear switches with a light actuation force and deep acoustic profile.', '["Linear", "5-pin", "45g Actuation", "Pre-lubed"]', '#ff85a1'),
-('s2', 'Tactile Thumps', 50.00, 'Switches', 'Satisfying tactile bump with a snappy return, perfect for heavy typists.', '["Tactile", "5-pin", "62g Actuation", "Nylon Housing"]', '#fb8500')
+-- Seed All 12 Products (Keyboards, Keycaps, Switches)
+INSERT INTO products (id, name, price, category, description, specs, color, image_url) VALUES
+('k1', 'Hyper-65 Graphite', 189.00, 'Keyboards', 'A premium 65% mechanical keyboard with a sleek aluminum frame and gasket mount design for a soft, acoustic bottom-out.', '["65% Layout", "Gasket Mount", "Hot-swappable PCB", "RGB Backlit"]', '#2d2d2d', 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&auto=format&fit=crop&q=80'),
+('k2', 'Frost TKL', 159.00, 'Keyboards', 'Minimalist Tenkeyless keyboard with a frosted polycarbonate case for smooth light diffusion and clean aesthetics.', '["TKL Layout", "Polycarbonate Case", "Hot-swappable", "White LEDs"]', '#e0e0e0', 'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=800&auto=format&fit=crop&q=80'),
+('k3', 'Aura-75 Wireless', 219.00, 'Keyboards', 'Flagship 75% CNC machined aluminum chassis with tri-mode Bluetooth/2.4G/USB-C and a solid brass acoustic weight.', '["75% Compact", "Tri-Mode Wireless", "Solid Brass Weight", "Flex-Cut PCB"]', '#c5a059', 'https://images.unsplash.com/photo-1595225476474-87563907a212?w=800&auto=format&fit=crop&q=80'),
+('k4', 'Cyber-40 Ortho', 135.00, 'Keyboards', 'Futuristic 40% ortholinear grid layout with rotary encoder knob, customizable OLED screen, and anodized teal finish.', '["40% Ortholinear", "Rotary Encoder", "OLED Screen", "QMK / VIA Ready"]', '#00b4d8', 'https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=800&auto=format&fit=crop&q=80'),
+
+('c1', 'Serenity Keycaps', 85.00, 'Keycaps', 'High-quality PBT dye-sub keycaps with a soothing pastel color palette and silky textured finish that resists shine.', '["PBT Material", "Cherry Profile", "128 Keys", "Dye-Sublimated"]', '#a2d2ff', 'https://images.unsplash.com/photo-1595044426077-d36d9236d54a?w=800&auto=format&fit=crop&q=80'),
+('c2', 'Midnight Bloom', 95.00, 'Keycaps', 'Dark-themed keycaps with floral violet accents, engineered from durable doubleshot ABS with crisp long-lasting legends.', '["ABS Material", "OSA Profile", "135 Keys", "Doubleshot"]', '#3d348b', 'https://images.unsplash.com/photo-1625842268584-8f3296236761?w=800&auto=format&fit=crop&q=80'),
+('c3', 'Matcha Latte PBT', 79.00, 'Keycaps', 'Botanical forest green and creamy milk tones with crisp Japanese Katakana sub-legends printed on 1.5mm thick PBT.', '["Thick 1.5mm PBT", "Cherry Profile", "140 Keys", "Katakana Sub-Legends"]', '#588157', 'https://images.unsplash.com/photo-1601445638532-3c6f6c3aa1d6?w=800&auto=format&fit=crop&q=80'),
+('c4', 'Retro Terminal 1984', 89.00, 'Keycaps', 'Vintage amber legends over dark warm-gray bases evoking classic mainframe workstations of the 1980s.', '["SA Spherical Profile", "ABS Doubleshot", "132 Keys", "Deep Dish Homing"]', '#f77f00', 'https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&auto=format&fit=crop&q=80'),
+
+('s1', 'Linear Velvets', 45.00, 'Switches', 'Ultra-smooth linear switches with a light actuation force and deep acoustic thock, factory pre-lubricated with Krytox.', '["Linear", "5-pin", "45g Actuation", "Factory Lubed"]', '#ff85a1', 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&auto=format&fit=crop&q=80'),
+('s2', 'Tactile Thumps', 50.00, 'Switches', 'Satisfying tactile bump with a snappy return and durable nylon housing, perfect for typing enthusiasts.', '["Tactile", "5-pin", "62g Actuation", "Nylon Housing"]', '#fb8500', 'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=800&auto=format&fit=crop&q=80'),
+('s3', 'Silent Alpacas', 55.00, 'Switches', 'Whisper-quiet linear switches equipped with integrated TPE rubber dampeners, ideal for quiet office productivity.', '["Silent Linear", "5-pin", "50g Actuation", "Dual Dampeners"]', '#06d6a0', 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&auto=format&fit=crop&q=80'),
+('s4', 'Clicky Jades', 42.00, 'Switches', 'Thick tactile clickbar design producing a deep acoustic click and crisp physical snap on every keystroke.', '["Clickbar Tactile", "5-pin PCB Mount", "55g Actuation", "Polycarbonate Housing"]', '#118ab2', 'https://images.unsplash.com/photo-1595225476474-87563907a212?w=800&auto=format&fit=crop&q=80')
 ON DUPLICATE KEY UPDATE 
     name=VALUES(name),
     price=VALUES(price),
     description=VALUES(description),
     specs=VALUES(specs),
-    color=VALUES(color);
+    color=VALUES(color),
+    image_url=VALUES(image_url);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Product } from '../data/products';
 
 interface ProductVisualProps {
@@ -9,8 +9,13 @@ interface ProductVisualProps {
 export const ProductVisual: React.FC<ProductVisualProps> = ({ product, size = 'small' }) => {
   const isLarge = size === 'large';
   const color = product.color;
+  const [imageError, setImageError] = useState(false);
 
-  // Render different CSS-based visual graphics depending on the category
+  useEffect(() => {
+    setImageError(false);
+  }, [product.imageUrl, product.id]);
+
+  // Render different CSS-based visual graphics depending on the category (graceful fallback)
   const renderVisual = () => {
     switch (product.category) {
       case 'Keyboards':
@@ -97,8 +102,22 @@ export const ProductVisual: React.FC<ProductVisualProps> = ({ product, size = 's
     }
   };
 
+  if (product.imageUrl && !imageError) {
+    return (
+      <div className={`product-visual-container has-photo ${product.category.toLowerCase()} ${isLarge ? 'large' : ''}`}>
+        <img
+          src={product.imageUrl}
+          alt={product.name}
+          className={`product-real-image ${isLarge ? 'large' : ''}`}
+          onError={() => setImageError(true)}
+          loading="lazy"
+        />
+      </div>
+    );
+  }
+
   return (
-    <div className={`product-visual-container ${product.category.toLowerCase()} ${isLarge ? 'large' : ''}`}>
+    <div className={`product-visual-container procedural ${product.category.toLowerCase()} ${isLarge ? 'large' : ''}`}>
       {renderVisual()}
     </div>
   );

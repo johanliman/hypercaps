@@ -29,12 +29,18 @@ try {
         $check = $pdo->query("SHOW TABLES LIKE '{$table}'")->fetchAll();
         if (count($check) > 0) {
             $count = $pdo->query("SELECT COUNT(*) as c FROM {$table}")->fetch()['c'];
-            echo "<li style='color: green;'>✅ Table <code>{$table}</code> found ({$count} records)</li>";
+            echo "<li style='color: green;'>✅ Table <code>{$table}</code> found ({$count} records)";
+            if ($table === 'products' && (int)$count < 12) {
+                echo " — <span style='color: #b45309; font-weight: 600;'>Note: Only {$count}/12 products found! Click below to sync all 12 products.</span>";
+            }
+            echo "</li>";
         } else {
             echo "<li style='color: red;'>❌ Table <code>{$table}</code> NOT FOUND! (Please import <code>backend/database/schema.sql</code> in phpMyAdmin)</li>";
         }
     }
     echo "</ul>";
+
+    echo "<p><a href='sync_products.php' style='display: inline-block; background: #2563eb; color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 600;'>🔄 Sync All 12 Products & Images into MySQL Database</a></p>";
 
 } catch (PDOException $e) {
     echo "<p style='color: red; font-size: 16px;'><strong>❌ DATABASE CONNECTION FAILED:</strong></p>";
