@@ -158,9 +158,7 @@ export const Cart: React.FC = () => {
             <Link to="/checkout" className="btn-primary btn-checkout">
               Proceed to Checkout &rarr;
             </Link>
-            <p className="summary-guarantee">
-              🔒 Secure checkout. 30-day money back guarantee included.
-            </p>
+
           </div>
         </div>
       </div>

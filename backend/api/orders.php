@@ -135,17 +135,18 @@ try {
       <div style='max-width: 620px; margin: 0 auto; background: #ffffff; border-radius: 14px; overflow: hidden; border: 1px solid #e5e5ea; box-shadow: 0 4px 16px rgba(0,0,0,0.04);'>
         
         <div style='background: #121212; padding: 28px 32px;'>
-          <h1 style='margin: 0; color: #ffffff; font-size: 24px; font-weight: 800; letter-spacing: -0.5px;'>
-            HYPER<span style='color: #888888; font-weight: 300;'>CAPS</span>
+          <p style='margin: 0 0 6px 0; color: #888888; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;'>Official Invoice</p>
+          <h1 style='margin: 0; color: #ffffff; font-size: 26px; font-weight: 800; letter-spacing: 0.5px;'>
+            HYPERCAPS
           </h1>
-          <p style='margin: 4px 0 0 0; color: #10b981; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;'>Official Tax Invoice</p>
+          <p style='margin: 6px 0 0 0; color: #10b981; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;'>Official Tax Invoice</p>
         </div>
 
         <div style='padding: 32px;'>
           <div style='margin-bottom: 24px;'>
             <h2 style='margin: 0 0 6px 0; font-size: 20px; color: #111;'>Thank you for your order, {$customerName}!</h2>
             <p style='margin: 0; color: #666; font-size: 14px; line-height: 1.5;'>
-              Your artisan keyboard components have been registered and are being prepared for dispatch.
+              Your order have been registered and are being prepared for dispatch
             </p>
           </div>
 
@@ -188,7 +189,7 @@ try {
             </tbody>
           </table>
 
-          <div style='border-top: 1px solid #e5e5ea; padding-top: 16px; margin-bottom: 28px;'>
+          <div style='border-top: 1px solid #e5e5ea; padding-top: 16px;'>
             <table style='width: 100%; font-size: 14px; line-height: 1.8;'>
               <tr>
                 <td style='color: #666;'>Subtotal:</td>
@@ -208,17 +209,11 @@ try {
               </tr>
             </table>
           </div>
-
-          <div style='background-color: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 8px; padding: 12px 16px; text-align: center;'>
-            <p style='margin: 0; font-size: 13px; color: #065f46; font-weight: 600;'>
-              ✓ Payment Verified • 30-Day Money Back Guarantee Included
-            </p>
-          </div>
         </div>
 
         <div style='background: #fafafa; border-top: 1px solid #e5e5ea; padding: 20px 32px; text-align: center; font-size: 12px; color: #888;'>
           <p style='margin: 0;'>Hypercaps Enthusiast Keyboards & Custom Components</p>
-          <p style='margin: 4px 0 0 0;'>Questions about this invoice? Contact us at <a href='mailto:johanliman@gmail.com' style='color: #2563eb; text-decoration: none;'>johanliman@gmail.com</a></p>
+          <p style='margin: 4px 0 0 0;'>Questions about this invoice? Contact us at <a href='mailto:support.hypercaps@gmail.com' style='color: #2563eb; text-decoration: none;'>support.hypercaps@gmail.com</a></p>
         </div>
       </div>
     </body>
@@ -248,10 +243,25 @@ try {
                 ? \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS 
                 : \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port       = (int)($emailConfig['port'] ?? 587);
-            $mail->Timeout    = 10;
+            $mail->Timeout    = 15;
+
+            // Fix for shared hosting SSL verification (InfinityFree OpenSSL CA bundle)
+            $mail->SMTPOptions = [
+                'ssl' => [
+                    'verify_peer'       => false,
+                    'verify_peer_name'  => false,
+                    'allow_self_signed' => true
+                ]
+            ];
 
             $mail->setFrom($emailConfig['username'], $emailConfig['from_name'] ?? 'Hypercaps');
             $mail->addAddress($customerEmail, $customerName);
+
+            // Also dispatch copy to store owner
+            if (!empty($emailConfig['from_email']) && strtolower($emailConfig['from_email']) !== strtolower($customerEmail)) {
+                $mail->addBCC($emailConfig['from_email'], 'Hypercaps Orders');
+            }
+
             $mail->isHTML(true);
             $mail->Subject = $emailSubject;
             $mail->Body    = $emailBody;
@@ -262,14 +272,15 @@ try {
         } catch (\Exception $e) {
             $emailSent = false;
             $emailNotice = "SMTP Send Failed: " . $mail->ErrorInfo;
+            @file_put_contents(__DIR__ . '/../email_error.log', date('[Y-m-d H:i:s] ') . $emailNotice . "\n", FILE_APPEND);
         }
     } else {
         // Fallback to standard PHP mail()
         $emailHeaders = [
             'MIME-Version: 1.0',
             'Content-type: text/html; charset=UTF-8',
-            'From: Hypercaps Orders <orders@clickclack.infinityfree.me>',
-            'Reply-To: support@clickclack.infinityfree.me',
+            'From: Hypercaps Orders <support.hypercaps@gmail.com>',
+            'Reply-To: support.hypercaps@gmail.com',
             'X-Mailer: PHP/' . phpversion()
         ];
         $emailSent = @mail($customerEmail, $emailSubject, $emailBody, implode("\r\n", $emailHeaders));

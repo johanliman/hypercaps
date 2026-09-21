@@ -41,6 +41,27 @@ export interface FinalOrder {
   emailSent: boolean;
 }
 
+export type CardBrand = 'visa' | 'mastercard' | 'amex' | 'discover' | 'unknown';
+
+export const detectCardBrand = (cardNumber: string): CardBrand => {
+  const clean = cardNumber.replace(/\D/g, '');
+  if (/^4/.test(clean)) return 'visa';
+  if (/^(5[1-5]|2[2-7])/.test(clean)) return 'mastercard';
+  if (/^3[47]/.test(clean)) return 'amex';
+  if (/^(6011|65|64[4-9]|622)/.test(clean)) return 'discover';
+  return 'unknown';
+};
+
+export const getCardBrandName = (brand: CardBrand): string => {
+  switch (brand) {
+    case 'visa': return 'Visa';
+    case 'mastercard': return 'Mastercard';
+    case 'amex': return 'American Express';
+    case 'discover': return 'Discover';
+    default: return 'Credit Card';
+  }
+};
+
 export const Checkout: React.FC = () => {
   const navigate = useNavigate();
   const { state, subtotal, clearCart } = useCart();
@@ -73,6 +94,8 @@ export const Checkout: React.FC = () => {
     cvv: '',
     sameAsBilling: true,
   });
+
+  const detectedBrand = detectCardBrand(payment.cardNumber);
 
   // Validation errors
   const [shippingErrors, setShippingErrors] = useState<Partial<Record<keyof ShippingInfo, string>>>({});
@@ -113,7 +136,11 @@ export const Checkout: React.FC = () => {
       errors.state = 'State / Province is required';
     }
     if (!shipping.zipCode.trim()) {
-      errors.zipCode = 'Postal / ZIP code is required';
+      errors.zipCode = 'ZIP / Postal code is required';
+    } else if (/[a-zA-Z]/.test(shipping.zipCode)) {
+      errors.zipCode = 'ZIP code cannot contain letters';
+    } else if (!/^\d{5}(-\d{4})?$/.test(shipping.zipCode.trim())) {
+      errors.zipCode = 'Please enter a valid numeric ZIP code (e.g. 94107)';
     }
 
     setShippingErrors(errors);
@@ -262,10 +289,18 @@ export const Checkout: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Card Number Auto-Formatter (XXXX XXXX XXXX XXXX)
+  // Card Number Auto-Formatter (XXXX XXXX XXXX XXXX or Amex XXXX XXXXXX XXXXX)
   const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const raw = e.target.value.replace(/\D/g, '').slice(0, 16);
-    const formatted = raw.replace(/(\d{4})/g, '$1 ').trim();
+    let formatted = '';
+    if (/^3[47]/.test(raw)) {
+      const p1 = raw.slice(0, 4);
+      const p2 = raw.slice(4, 10);
+      const p3 = raw.slice(10, 15);
+      formatted = [p1, p2, p3].filter(Boolean).join(' ');
+    } else {
+      formatted = raw.replace(/(\d{4})/g, '$1 ').trim();
+    }
     setPayment({ ...payment, cardNumber: formatted });
     if (paymentErrors.cardNumber) {
       setPaymentErrors({ ...paymentErrors, cardNumber: undefined });
@@ -301,13 +336,23 @@ export const Checkout: React.FC = () => {
             We have received your order and sent your official invoice directly to your email.
           </p>
 
-          <div className="email-dispatched-banner">
-            <span className="email-banner-icon">✉️</span>
-            <div className="email-banner-text">
-              <strong>Official Invoice & Receipt Sent!</strong>
-              <p>Dispatched to: <span className="email-target">{completedOrder.customerEmail}</span></p>
+          {completedOrder.emailSent ? (
+            <div className="email-dispatched-banner">
+              <span className="email-banner-icon">✉️</span>
+              <div className="email-banner-text">
+                <strong>Official Invoice & Receipt Sent!</strong>
+                <p>Dispatched to: <span className="email-target">{completedOrder.customerEmail}</span> (Check your inbox and spam)</p>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="email-dispatched-banner">
+              <span className="email-banner-icon">✉️</span>
+              <div className="email-banner-text">
+                <strong>Official Invoice Generated!</strong>
+                <p>Target recipient: <span className="email-target">{completedOrder.customerEmail}</span> (Check inbox & spam folder)</p>
+              </div>
+            </div>
+          )}
 
           <div className="confirmation-receipt-box">
             <div className="receipt-row">
@@ -544,11 +589,14 @@ export const Checkout: React.FC = () => {
                   <input
                     id="zipCode"
                     type="text"
+                    inputMode="numeric"
+                    maxLength={10}
                     className={`form-input ${shippingErrors.zipCode ? 'has-error' : ''}`}
                     placeholder="94107"
                     value={shipping.zipCode}
                     onChange={(e) => {
-                      setShipping({ ...shipping, zipCode: e.target.value });
+                      const filtered = e.target.value.replace(/[a-zA-Z]/g, '');
+                      setShipping({ ...shipping, zipCode: filtered });
                       if (shippingErrors.zipCode) setShippingErrors({ ...shippingErrors, zipCode: undefined });
                     }}
                   />
@@ -654,6 +702,16 @@ export const Checkout: React.FC = () => {
 
               {payment.method === 'card' && (
                 <div className="card-input-box fade-in">
+                  <div className="card-brands-header">
+                    <span className="card-brands-label">Accepted Cards:</span>
+                    <div className="card-network-pills">
+                      <span className={`network-pill ${detectedBrand === 'visa' ? 'active' : ''}`}>Visa</span>
+                      <span className={`network-pill ${detectedBrand === 'mastercard' ? 'active' : ''}`}>Mastercard</span>
+                      <span className={`network-pill ${detectedBrand === 'amex' ? 'active' : ''}`}>Amex</span>
+                      <span className={`network-pill ${detectedBrand === 'discover' ? 'active' : ''}`}>Discover</span>
+                    </div>
+                  </div>
+
                   <div className="form-grid">
                     <div className="form-group full-width">
                       <label htmlFor="cardName">Cardholder Name *</label>
@@ -672,10 +730,18 @@ export const Checkout: React.FC = () => {
                     </div>
 
                     <div className="form-group full-width">
-                      <label htmlFor="cardNumber">Card Number *</label>
+                      <div className="label-with-brand">
+                        <label htmlFor="cardNumber">Card Number *</label>
+                        {detectedBrand !== 'unknown' && (
+                          <span className={`detected-card-badge brand-${detectedBrand}`}>
+                            {getCardBrandName(detectedBrand)}
+                          </span>
+                        )}
+                      </div>
                       <input
                         id="cardNumber"
                         type="text"
+                        inputMode="numeric"
                         className={`form-input ${paymentErrors.cardNumber ? 'has-error' : ''}`}
                         placeholder="4242 4242 4242 4242"
                         value={payment.cardNumber}
@@ -726,22 +792,6 @@ export const Checkout: React.FC = () => {
                 </div>
               )}
 
-              <div className="billing-checkbox-container">
-                <label className="checkbox-label">
-                  <input
-                    type="checkbox"
-                    checked={payment.sameAsBilling}
-                    onChange={(e) => setPayment({ ...payment, sameAsBilling: e.target.checked })}
-                  />
-                  <span>Billing address is identical to shipping address</span>
-                </label>
-              </div>
-
-              <div className="security-guarantee-badge">
-                <span className="lock-icon">🔒</span>
-                <span>256-Bit SSL Encrypted Mock Payment Gateway. No sensitive card data is stored.</span>
-              </div>
-
               <div className="step-actions">
                 <button type="button" className="btn-outline" onClick={() => setStep(1)}>
                   &larr; Back to Shipping
@@ -782,8 +832,10 @@ export const Checkout: React.FC = () => {
                   </div>
                   {payment.method === 'card' ? (
                     <>
-                      <p className="review-text bold">Credit Card</p>
-                      <p className="review-text card-num">Ending in •••• {payment.cardNumber.slice(-4) || '4242'}</p>
+                      <p className="review-text bold">
+                        {payment.cardNumber ? getCardBrandName(detectCardBrand(payment.cardNumber)) : 'Credit Card'}
+                      </p>
+                      <p className="review-text card-num">Ending in •••• {payment.cardNumber.replace(/\s/g, '').slice(-4) || '4242'}</p>
                       <p className="review-text">Expires: {payment.expiry || '12/28'}</p>
                       <p className="review-text">Cardholder: {payment.cardName}</p>
                     </>
@@ -843,7 +895,7 @@ export const Checkout: React.FC = () => {
                       <span className="spinner"></span> Processing Order...
                     </span>
                   ) : (
-                    `Authorize & Place Order • $${grandTotal.toFixed(2)}`
+                    'Place Order'
                   )}
                 </button>
               </div>
@@ -887,17 +939,6 @@ export const Checkout: React.FC = () => {
               <div className="summary-row total">
                 <span>Grand Total</span>
                 <span className="total-price">${grandTotal.toFixed(2)}</span>
-              </div>
-            </div>
-
-            <div className="guarantee-box">
-              <div className="guarantee-item">
-                <span className="g-icon">📦</span>
-                <span>Custom packaging & foam dampening</span>
-              </div>
-              <div className="guarantee-item">
-                <span className="g-icon">🔄</span>
-                <span>30-Day Hassle-Free Enthusiast Warranty</span>
               </div>
             </div>
           </div>

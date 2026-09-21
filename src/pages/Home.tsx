@@ -88,20 +88,7 @@ export const Home: React.FC = () => {
             <p>
               We believe a keyboard is more than just an input device—it's an extension of your creative and professional workflow. Every item in our shop is selected for its sound signature, acoustic performance, visual symmetry, and tactile feel.
             </p>
-            <div className="feature-badges">
-              <div className="feature-badge">
-                <span className="feature-icon">🛡️</span>
-                <span>Premium Quality</span>
-              </div>
-              <div className="feature-badge">
-                <span className="feature-icon">✈️</span>
-                <span>Worldwide Shipping</span>
-              </div>
-              <div className="feature-badge">
-                <span className="feature-icon">⚡</span>
-                <span>Expert Support</span>
-              </div>
-            </div>
+
           </div>
           <div className="about-brand-visual">
             <div className="aesthetic-box-frame">

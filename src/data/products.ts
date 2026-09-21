@@ -16,7 +16,7 @@ export interface CartItem extends Product {
 }
 
 export const products: Product[] = [
-  // --- KEYBOARDS ---
+  // --- KEYBOARDS (6 items) ---
   {
     id: 'k1',
     name: 'Hyper-65 Graphite',
@@ -57,8 +57,28 @@ export const products: Product[] = [
     color: '#00b4d8',
     imageUrl: 'https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=800&auto=format&fit=crop&q=80'
   },
+  {
+    id: 'k5',
+    name: 'Shelby-80 Artisan',
+    price: 239,
+    category: 'Keyboards',
+    description: 'Custom 80% Tenkeyless board with an anodized navy aluminum chassis, seamless chamfered edges, and deep acoustic sound profile.',
+    specs: ['80% TKL Layout', 'CNC Aluminum Chassis', 'FR4 Mounting Plate', 'South-Facing Hotswap'],
+    color: '#1d3557',
+    imageUrl: 'https://images.unsplash.com/photo-1688966863295-03a35c1132b2?w=800&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 'k6',
+    name: 'Tofu-60 Minimalist',
+    price: 169,
+    category: 'Keyboards',
+    description: 'Classic 60% compact anodized aluminum keyboard case equipped with internal brass weight bar and acoustic poron dampening.',
+    specs: ['60% Compact Layout', 'Brass Weight Bar', 'Poron Gasket Dampeners', 'QMK / VIA Ready'],
+    color: '#4a4e69',
+    imageUrl: 'https://images.unsplash.com/photo-1697022976768-2fd7f4e4c399?w=800&auto=format&fit=crop&q=80'
+  },
 
-  // --- KEYCAPS ---
+  // --- KEYCAPS (6 items) ---
   {
     id: 'c1',
     name: 'Serenity Keycaps',
@@ -97,10 +117,30 @@ export const products: Product[] = [
     description: 'Vintage amber legends over dark warm-gray bases evoking classic mainframe workstations of the 1980s.',
     specs: ['SA Spherical Profile', 'ABS Doubleshot', '132 Keys', 'Deep Dish Homing'],
     color: '#f77f00',
-    imageUrl: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&auto=format&fit=crop&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1611087889903-b4837b46857c?w=800&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 'c5',
+    name: 'Carbon Cyberpunk PBT',
+    price: 92,
+    category: 'Keycaps',
+    description: 'High-contrast anthracite and vibrant industrial orange accent keycaps inspired by vintage tooling and cyber aesthetics.',
+    specs: ['PBT Dye-Sub', 'Cherry Profile', '142 Keys', 'Industrial Orange Accents'],
+    color: '#ff7b00',
+    imageUrl: 'https://images.unsplash.com/photo-1677229537285-ea9467edb90a?w=800&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 'c6',
+    name: 'Nebula Pink Artisan',
+    price: 98,
+    category: 'Keycaps',
+    description: 'Vibrant magenta and lilac keycaps sculpted in spherical profile with deep sculpted finger scoops and novelty keys.',
+    specs: ['MT3 Profile', 'Doubleshot ABS', '130 Keys', 'Deep Dish Spherical'],
+    color: '#d90429',
+    imageUrl: 'https://images.unsplash.com/photo-1667296682738-1bdcac5719d3?w=800&auto=format&fit=crop&q=80'
   },
 
-  // --- SWITCHES ---
+  // --- SWITCHES (6 items) ---
   {
     id: 's1',
     name: 'Linear Velvets',
@@ -109,7 +149,7 @@ export const products: Product[] = [
     description: 'Ultra-smooth linear switches with a light actuation force and deep acoustic thock, factory pre-lubricated with Krytox.',
     specs: ['Linear', '5-pin', '45g Actuation', 'Factory Lubed'],
     color: '#ff85a1',
-    imageUrl: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&auto=format&fit=crop&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1635135449698-dbf56dd1dd0c?w=800&auto=format&fit=crop&q=80'
   },
   {
     id: 's2',
@@ -119,7 +159,7 @@ export const products: Product[] = [
     description: 'Satisfying tactile bump with a snappy return and durable nylon housing, perfect for typing enthusiasts.',
     specs: ['Tactile', '5-pin', '62g Actuation', 'Nylon Housing'],
     color: '#fb8500',
-    imageUrl: 'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=800&auto=format&fit=crop&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1601983578498-5272e886ce99?w=800&auto=format&fit=crop&q=80'
   },
   {
     id: 's3',
@@ -129,7 +169,7 @@ export const products: Product[] = [
     description: 'Whisper-quiet linear switches equipped with integrated TPE rubber dampeners, ideal for quiet office productivity.',
     specs: ['Silent Linear', '5-pin', '50g Actuation', 'Dual Dampeners'],
     color: '#06d6a0',
-    imageUrl: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&auto=format&fit=crop&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1786173974625-ce9291a18ee1?w=800&auto=format&fit=crop&q=80'
   },
   {
     id: 's4',
@@ -139,6 +179,26 @@ export const products: Product[] = [
     description: 'Thick tactile clickbar design producing a deep acoustic click and crisp physical snap on every keystroke.',
     specs: ['Clickbar Tactile', '5-pin PCB Mount', '55g Actuation', 'Polycarbonate Housing'],
     color: '#118ab2',
-    imageUrl: 'https://images.unsplash.com/photo-1595225476474-87563907a212?w=800&auto=format&fit=crop&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1786173974541-6c1c7462d1d8?w=800&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 's5',
+    name: 'Boba U4T Tactiles',
+    price: 52,
+    category: 'Switches',
+    description: 'Acclaimed high-end tactile switches featuring proprietary pearl POM housing and a rounded, highly pronounced tactile bump.',
+    specs: ['Tactile Bump', '5-pin PCB Mount', '62g Actuation', 'Custom Pearl Housing'],
+    color: '#ffd166',
+    imageUrl: 'https://images.unsplash.com/photo-1636091156281-777ee1e048d8?w=800&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 's6',
+    name: 'Gateron Black Inks',
+    price: 48,
+    category: 'Switches',
+    description: 'Legendary enthusiast deep-sounding linear switches with dark smokey translucent housings and low-friction stems.',
+    specs: ['Heavy Linear', '5-pin PCB Mount', '60g Actuation', 'Smokey Inks Housing'],
+    color: '#2b2d42',
+    imageUrl: 'https://images.unsplash.com/photo-1632125972828-a4cfdec70f00?w=800&auto=format&fit=crop&q=80'
   }
 ];

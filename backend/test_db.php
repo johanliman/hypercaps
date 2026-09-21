@@ -63,33 +63,71 @@ if (isset($_GET['send_test_email'])) {
     require_once __DIR__ . '/phpmailer/PHPMailer.php';
     require_once __DIR__ . '/phpmailer/SMTP.php';
 
+    $testPort = isset($_GET['port']) && $_GET['port'] == '465' ? 465 : (int)($emailConfig['port'] ?? 587);
+    $testSecure = $testPort === 465 ? \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS : \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
+
     $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
+    $debugOutput = '';
+    $mail->Debugoutput = function($str, $level) use (&$debugOutput) {
+        $debugOutput .= htmlspecialchars($str) . "\n";
+    };
+    $mail->SMTPDebug = 2; // Capture full connection debug trace
+
     try {
         $mail->isSMTP();
-        $mail->Host       = $emailConfig['host'];
+        $mail->Host       = $emailConfig['host'] ?? 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
         $mail->Username   = $emailConfig['username'];
         $mail->Password   = str_replace(' ', '', $emailConfig['password']);
-        $mail->SMTPSecure = ($emailConfig['encryption'] ?? 'tls') === 'ssl' 
-            ? \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS 
-            : \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = (int)($emailConfig['port'] ?? 587);
-        $mail->Timeout    = 10;
+        $mail->SMTPSecure = $testSecure;
+        $mail->Port       = $testPort;
+        $mail->Timeout    = 15;
+
+        // Fix for shared hosting SSL verification
+        $mail->SMTPOptions = [
+            'ssl' => [
+                'verify_peer'       => false,
+                'verify_peer_name'  => false,
+                'allow_self_signed' => true
+            ]
+        ];
 
         $mail->setFrom($emailConfig['username'], 'Hypercaps Diagnostics');
         $mail->addAddress($emailConfig['username'], 'Test Recipient');
         $mail->isHTML(true);
-        $mail->Subject = 'Hypercaps SMTP Diagnostics Test Email';
-        $mail->Body    = '<h3>SMTP Email is Working!</h3><p>Your Gmail App Password and PHPMailer on InfinityFree are configured and sending successfully.</p>';
+        $mail->Subject = "Hypercaps SMTP Diagnostics Test Email (Port {$testPort})";
+        $mail->Body    = "<h3>SMTP Email is Working!</h3><p>Your Gmail App Password and PHPMailer on InfinityFree are configured and sending successfully over Port {$testPort}.</p>";
 
         $mail->send();
-        echo "<p style='color: green; font-weight: bold;'>✅ SUCCESS: Test email sent to {$emailConfig['username']}!</p>";
+        echo "<div style='background: #ecfdf5; border: 1px solid #10b981; padding: 16px; border-radius: 8px; margin: 15px 0;'>";
+        echo "<p style='color: #065f46; font-weight: bold; margin: 0;'>✅ SUCCESS: Test email sent to {$emailConfig['username']} via Port {$testPort}!</p>";
+        echo "<p style='font-size: 13px; color: #047857; margin: 6px 0 0 0;'>Check your inbox (and Spam/Junk folder) for confirmation.</p>";
+        echo "</div>";
     } catch (\Exception $e) {
-        echo "<p style='color: red; font-weight: bold;'>❌ SMTP SEND FAILED:</p>";
-        echo "<pre style='background: #fee; padding: 12px; border-radius: 6px; border: 1px solid #fcc; font-size: 13px;'>" . htmlspecialchars($mail->ErrorInfo) . "</pre>";
+        echo "<div style='background: #fef2f2; border: 1px solid #ef4444; padding: 16px; border-radius: 8px; margin: 15px 0;'>";
+        echo "<p style='color: #991b1b; font-weight: bold; margin: 0;'>❌ SMTP SEND FAILED (Port {$testPort}):</p>";
+        echo "<p style='color: #b91c1c; font-size: 13px; margin: 6px 0;'>" . htmlspecialchars($mail->ErrorInfo) . "</p>";
+        echo "<details style='margin-top: 10px;'><summary style='cursor: pointer; color: #7f1d1d; font-weight: 600; font-size: 12px;'>Show Technical Connection Log</summary>";
+        echo "<pre style='background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #fca5a5; font-size: 11px; max-height: 250px; overflow-y: auto; margin-top: 8px;'>" . $debugOutput . "</pre>";
+        echo "</details>";
+        echo "</div>";
     }
-} else {
-    echo "<p><a href='?send_test_email=1' style='background: #121212; color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 600;'>Send Test Email to {$emailConfig['username']}</a></p>";
+}
+
+echo "<div style='display: flex; gap: 10px; margin: 15px 0;'>";
+echo "<a href='?send_test_email=1&port=587' style='background: #121212; color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 600;'>Send Test Email (Port 587 - TLS)</a>";
+echo "<a href='?send_test_email=1&port=465' style='background: #374151; color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 600;'>Send Test Email (Port 465 - SSL)</a>";
+echo "</div>";
+
+$logPath = __DIR__ . '/email_error.log';
+if (file_exists($logPath)) {
+    $logs = file_get_contents($logPath);
+    if (!empty($logs)) {
+        echo "<div style='margin-top: 20px; background: #fffbeb; border: 1px solid #f59e0b; padding: 12px 16px; border-radius: 8px;'>";
+        echo "<strong style='color: #92400e; font-size: 13px;'>Recent Order Email Errors (email_error.log):</strong>";
+        echo "<pre style='font-size: 11px; color: #b45309; max-height: 150px; overflow-y: auto; margin: 6px 0 0 0;'>" . htmlspecialchars($logs) . "</pre>";
+        echo "</div>";
+    }
 }
 
 echo "</div>";

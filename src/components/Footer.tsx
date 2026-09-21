@@ -29,7 +29,7 @@ export const Footer: React.FC = () => {
           <div className="footer-column">
             <h4>Contact Us</h4>
             <div className="footer-contact-block">
-              <a href="mailto:johanliman@gmail.com" className="footer-email-link">
+              <a href="mailto:support.hypercaps@gmail.com" className="footer-email-link">
                 <svg 
                   viewBox="0 0 24 24" 
                   fill="none" 
@@ -43,7 +43,7 @@ export const Footer: React.FC = () => {
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                   <polyline points="22,6 12,13 2,6"></polyline>
                 </svg>
-                <span>johanliman@gmail.com</span>
+                <span>support.hypercaps@gmail.com</span>
               </a>
               <p className="footer-contact-hint">
                 Questions about custom keyboard builds, switch recommendations, or orders? Click to send us an email directly.

@@ -7,8 +7,8 @@ return [
     'host'       => 'smtp.gmail.com',
     'port'       => 587,
     'encryption' => 'tls',
-    'username'   => 'johanliman@gmail.com',
-    'password'   => 'hmdwzatvicmfjuvb',
-    'from_email' => 'johanliman@gmail.com',
+    'username'   => 'support.hypercaps@gmail.com',
+    'password'   => 'adlxmdaunmfkrscg',
+    'from_email' => 'support.hypercaps@gmail.com',
     'from_name'  => 'Hypercaps Keyboards',
 ];
