@@ -76,9 +76,6 @@ export default function KeycapRain() {
 
         if (!mount) return
 
-        // =========================
-        // SETTINGS
-        // =========================
 
         const count = 10
 
@@ -91,14 +88,10 @@ export default function KeycapRain() {
 
         const fallSpeed = 0.5
 
-        // Important performance setting
         const targetFPS = 30
         const frameInterval = 1000 / targetFPS
 
 
-        // =========================
-        // SCENE
-        // =========================
 
         const scene = new THREE.Scene()
 
@@ -112,9 +105,6 @@ export default function KeycapRain() {
         camera.position.set(0, 0, 12)
 
 
-        // =========================
-        // RENDERER
-        // =========================
 
         const renderer = new THREE.WebGLRenderer({
             antialias: false,
@@ -122,7 +112,6 @@ export default function KeycapRain() {
             powerPreference: "high-performance",
         })
 
-        // Keep the background inexpensive
         renderer.setPixelRatio(1)
 
         renderer.setSize(
@@ -138,9 +127,6 @@ export default function KeycapRain() {
         mount.appendChild(renderer.domElement)
 
 
-        // =========================
-        // LIGHTS
-        // =========================
 
         const ambientLight =
             new THREE.AmbientLight(
@@ -166,9 +152,6 @@ export default function KeycapRain() {
         )
 
 
-        // =========================
-        // KEYCAP GEOMETRY
-        // =========================
 
         const skirtGeometry =
             createTaperedRoundedBox({
@@ -190,9 +173,6 @@ export default function KeycapRain() {
             )
 
 
-        // =========================
-        // MATERIALS
-        // =========================
 
         const skirtMaterial =
             new THREE.MeshStandardMaterial({
@@ -209,9 +189,6 @@ export default function KeycapRain() {
             })
 
 
-        // =========================
-        // INSTANCES
-        // =========================
 
         const skirts =
             new THREE.InstancedMesh(
@@ -239,9 +216,6 @@ export default function KeycapRain() {
         scene.add(tops)
 
 
-        // =========================
-        // KEYCAP STATE
-        // =========================
 
         const keycaps: KeycapState[] = []
 
@@ -304,9 +278,6 @@ export default function KeycapRain() {
         }
 
 
-        // =========================
-        // MATRIX HELPERS
-        // =========================
 
         const quaternion =
             new THREE.Quaternion()
@@ -383,9 +354,6 @@ export default function KeycapRain() {
         tops.instanceMatrix.needsUpdate = true
 
 
-        // =========================
-        // TAB VISIBILITY
-        // =========================
 
         let pageVisible = !document.hidden
 
@@ -399,9 +367,6 @@ export default function KeycapRain() {
         )
 
 
-        // =========================
-        // ANIMATION
-        // =========================
 
         let animationFrameId = 0
         let lastFrameTime = 0
@@ -414,7 +379,6 @@ export default function KeycapRain() {
                 return
             }
 
-            // 30 FPS cap
             if (
                 time - lastFrameTime <
                 frameInterval
@@ -433,11 +397,9 @@ export default function KeycapRain() {
             for (let i = 0; i < count; i++) {
                 const keycap = keycaps[i]
 
-                // Fall
                 keycap.position.y -=
                     fallSpeed * delta
 
-                // Rotate
                 keycap.rotation.x +=
                     keycap.spin.x * delta
 
@@ -447,7 +409,6 @@ export default function KeycapRain() {
                 keycap.rotation.z +=
                     keycap.spin.z * delta
 
-                // Recycle at top
                 if (
                     keycap.position.y <
                     -spreadY / 2
@@ -512,9 +473,6 @@ export default function KeycapRain() {
             requestAnimationFrame(animate)
 
 
-        // =========================
-        // RESIZE
-        // =========================
 
         const resizeObserver =
             new ResizeObserver(() => {
@@ -542,9 +500,6 @@ export default function KeycapRain() {
         resizeObserver.observe(mount)
 
 
-        // =========================
-        // CLEANUP
-        // =========================
 
         return () => {
             cancelAnimationFrame(

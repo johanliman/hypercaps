@@ -6,10 +6,6 @@ import { ProductVisual } from '../components/ProductVisual';
 export const Cart: React.FC = () => {
   const { state, updateQuantity, removeFromCart, clearCart, subtotal } = useCart();
 
-  const shippingCost = subtotal > 150 ? 0 : 15;
-  const totalCost = subtotal + shippingCost;
-
-  // If cart is empty
   if (state.items.length === 0) {
     return (
       <div className="container cart-empty-page fade-in">
@@ -44,7 +40,6 @@ export const Cart: React.FC = () => {
       <h1 className="page-title">Shopping Cart</h1>
       
       <div className="cart-layout">
-        {/* Left Column: List of items */}
         <div className="cart-items-column">
           <div className="cart-items-header">
             <span>Product</span>
@@ -55,14 +50,12 @@ export const Cart: React.FC = () => {
           <div className="cart-items-list">
             {state.items.map((item) => (
               <div key={item.id} className="cart-item-row">
-                {/* Visual */}
                 <div className="cart-item-visual-cell">
                   <div className="cart-item-visual-preview">
                     <ProductVisual product={item} size="small" />
                   </div>
                 </div>
 
-                {/* Info */}
                 <div className="cart-item-info-cell">
                   <span className="cart-item-category">{item.category}</span>
                   <Link to={`/product/${item.id}`} className="cart-item-name">
@@ -71,7 +64,6 @@ export const Cart: React.FC = () => {
                   <span className="cart-item-price">${item.price}</span>
                 </div>
 
-                {/* Quantity Control */}
                 <div className="cart-item-qty-cell">
                   <div className="qty-selector mini">
                     <button 
@@ -92,12 +84,10 @@ export const Cart: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Subtotal */}
                 <div className="cart-item-total-cell">
                   <span className="cart-item-subtotal">${item.price * item.quantity}</span>
                 </div>
 
-                {/* Delete button */}
                 <div className="cart-item-remove-cell">
                   <button 
                     className="btn-remove" 
@@ -129,7 +119,6 @@ export const Cart: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Column: Order Summary */}
         <div className="cart-summary-column">
           <div className="summary-card">
             <h3 className="summary-title">Order Summary</h3>
@@ -139,26 +128,16 @@ export const Cart: React.FC = () => {
                 <span>Subtotal</span>
                 <span>${subtotal}</span>
               </div>
-              <div className="summary-row">
-                <span>Shipping</span>
-                <span>{shippingCost === 0 ? 'FREE' : `$${shippingCost}`}</span>
-              </div>
-              {shippingCost > 0 && (
-                <div className="shipping-hint">
-                  Add <strong>${150 - subtotal}</strong> more for free shipping!
-                </div>
-              )}
               <div className="summary-divider"></div>
               <div className="summary-row total">
                 <span>Estimated Total</span>
-                <span className="total-price">${totalCost}</span>
+                <span className="total-price">${subtotal}</span>
               </div>
             </div>
 
             <Link to="/checkout" className="btn-primary btn-checkout">
               Proceed to Checkout &rarr;
             </Link>
-
           </div>
         </div>
       </div>

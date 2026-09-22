@@ -1,0 +1,205 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 760" width="980" height="760">
+  <defs>
+    <!-- Arrowhead markers -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1e293b"/>
+    </marker>
+    <marker id="arrow-left" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 8 1.5 L 0 5 L 8 8.5 z" fill="#1e293b"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="980" height="760" fill="#ffffff"/>
+  
+  <!-- Outer Card Frame -->
+  <rect x="15" y="15" width="950" height="730" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+
+  <!-- Subtitle Header (Matching user example 'System Architecture (Deployment View):') -->
+  <text x="50" y="52" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#0f4c81" letter-spacing="0.2">System Architecture (Deployment View):</text>
+  <line x1="50" y1="64" x2="930" y2="64" stroke="#e2e8f0" stroke-width="1.2"/>
+
+  <!-- Diagram Center Title -->
+  <text x="490.0" y="104" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="22" font-weight="800" fill="#0f172a" text-anchor="middle" letter-spacing="0.5">Hypercaps</text>
+
+  <!-- ==================== 1. CLIENT BROWSER BOX ==================== -->
+  <g transform="translate(90, 125)">
+    <rect width="130" height="66" rx="8" fill="#ffffff" stroke="#1e293b" stroke-width="1.8"/>
+    <text x="65" y="26" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">Client browser</text>
+    <text x="65" y="43" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#2563eb" text-anchor="middle">React 18 SPA</text>
+    <text x="65" y="56" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="500" fill="#64748b" text-anchor="middle">(Vite + TS)</text>
+  </g>
+
+  <!-- Arrow from Client to PHP App Layer -->
+  <path d="M 155 191 L 155 238" fill="none" stroke="#1e293b" stroke-width="1.8" marker-end="url(#arrow)"/>
+  
+  <!-- Left Validation text tags (matching user example) -->
+  <text x="75" y="218" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#334155" text-anchor="end">Validation</text>
+  <text x="75" y="415" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#334155" text-anchor="end">Validation</text>
+
+  <!-- ==================== 2. PHP APP LAYER BOX ==================== -->
+  <g transform="translate(90, 240)">
+    <!-- Outer Container -->
+    <rect width="270" height="315" rx="8" fill="#ffffff" stroke="#1e293b" stroke-width="1.8"/>
+    <text x="135" y="26" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="middle">PHP App Layer</text>
+
+    <!-- Sub-box Row 1: Diagnostics & Catalog -->
+    <g transform="translate(16, 42)">
+      <rect width="112" height="42" rx="4" fill="#ffffff" stroke="#1e293b" stroke-width="1.4"/>
+      <text x="56" y="24" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#0f172a" text-anchor="middle">Diagnostics</text>
+      <text x="56" y="36" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#64748b" text-anchor="middle">test_db.php</text>
+
+      <rect x="126" y="0" width="112" height="42" rx="4" fill="#ffffff" stroke="#1e293b" stroke-width="1.4"/>
+      <text x="182" y="24" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#0f172a" text-anchor="middle">Catalog API</text>
+      <text x="182" y="36" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#64748b" text-anchor="middle">products.php</text>
+    </g>
+
+    <!-- Sub-box Row 2: Sync & Checkout -->
+    <g transform="translate(16, 94)">
+      <rect width="112" height="42" rx="4" fill="#ffffff" stroke="#1e293b" stroke-width="1.4"/>
+      <text x="56" y="24" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#0f172a" text-anchor="middle">Catalog Sync</text>
+      <text x="56" y="36" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#64748b" text-anchor="middle">sync_products</text>
+
+      <rect x="126" y="0" width="112" height="42" rx="4" fill="#ffffff" stroke="#1e293b" stroke-width="1.4"/>
+      <text x="182" y="24" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#0f172a" text-anchor="middle">Checkout API</text>
+      <text x="182" y="36" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#64748b" text-anchor="middle">orders.php</text>
+    </g>
+
+    <!-- Sub-box Row 3: Order Transaction Processor -->
+    <g transform="translate(16, 148)">
+      <rect width="238" height="46" rx="4" fill="#ffffff" stroke="#1e293b" stroke-width="1.4"/>
+      <text x="119" y="22" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">Checkout API Engine</text>
+      <text x="119" y="37" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="500" fill="#475569" text-anchor="middle">Order Insertion • 7.75% Tax • Line Items</text>
+    </g>
+
+    <!-- Up Arrow from Data Access Layer to Order Engine -->
+    <path d="M 135 244 L 135 200" fill="none" stroke="#1e293b" stroke-width="1.6" marker-end="url(#arrow)"/>
+
+    <!-- Sub-box Row 4: Data Access Layer -->
+    <g transform="translate(16, 248)">
+      <rect width="238" height="48" rx="4" fill="#ffffff" stroke="#1e293b" stroke-width="1.4"/>
+      <text x="119" y="23" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">Data Access Layer</text>
+      <text x="119" y="38" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10" fill="#0284c7" text-anchor="middle">db.php (PDO / Prepared Stmts)</text>
+    </g>
+  </g>
+
+  <!-- ==================== 3. MYSQL SCHEMA BOX ==================== -->
+  <g transform="translate(450, 240)">
+    <!-- Outer Container -->
+    <rect width="210" height="315" rx="8" fill="#ffffff" stroke="#1e293b" stroke-width="1.8"/>
+    <text x="105" y="26" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="middle">MySQL schema</text>
+    <text x="105" y="42" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#64748b" text-anchor="middle">hypercaps_db</text>
+
+    <!-- Table 1: orders -->
+    <g transform="translate(16, 56)">
+      <rect width="178" height="44" rx="4" fill="#ffffff" stroke="#1e293b" stroke-width="1.4"/>
+      <text x="89" y="22" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">orders</text>
+      <text x="89" y="36" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5" fill="#64748b" text-anchor="middle">ID, Customer, Totals, Status</text>
+    </g>
+
+    <!-- Table 2: order_items -->
+    <g transform="translate(16, 114)">
+      <rect width="178" height="44" rx="4" fill="#ffffff" stroke="#1e293b" stroke-width="1.4"/>
+      <text x="89" y="22" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">order_items</text>
+      <text x="89" y="36" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5" fill="#64748b" text-anchor="middle">Relational Line Items &amp; Qty</text>
+    </g>
+
+    <!-- Table 3: products -->
+    <g transform="translate(16, 172)">
+      <rect width="178" height="44" rx="4" fill="#ffffff" stroke="#1e293b" stroke-width="1.4"/>
+      <text x="89" y="22" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">products</text>
+      <text x="89" y="36" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5" fill="#64748b" text-anchor="middle">Catalog, Specs, Prices, URLs</text>
+    </g>
+
+    <!-- Table 4: schema.sql -->
+    <g transform="translate(16, 230)">
+      <rect width="178" height="44" rx="4" fill="#ffffff" stroke="#1e293b" stroke-width="1.4"/>
+      <text x="89" y="22" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">details</text>
+      <text x="89" y="36" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5" fill="#64748b" text-anchor="middle">Foreign Keys &amp; Indexes</text>
+    </g>
+  </g>
+
+  <!-- Double-headed arrow between PHP App Layer and MySQL Schema -->
+  <line x1="360" y1="400" x2="450" y2="400" stroke="#1e293b" stroke-width="1.8" marker-end="url(#arrow)" marker-start="url(#arrow-left)"/>
+
+  <!-- Top Security / Session Arrow between MySQL Schema and Client / Security Layer -->
+  <path d="M 550 240 L 550 158 L 228 158" fill="none" stroke="#1e293b" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="560" y="200" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#334155">Security</text>
+  <text x="380" y="150" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#334155" text-anchor="middle">Session / CORS</text>
+
+  <!-- ==================== 4. EXTERNAL RIGHT-SIDE COMPONENTS ==================== -->
+
+  <!-- Top Right: Monitoring & Email Server -->
+  <g transform="translate(760, 125)">
+    <!-- Monitor / Desktop Icon -->
+    <rect x="25" y="0" width="76" height="50" rx="3" fill="#ffffff" stroke="#1e293b" stroke-width="1.8"/>
+    <rect x="31" y="6" width="64" height="38" rx="2" fill="#ffffff" stroke="#1e293b" stroke-width="1"/>
+    
+    <!-- Monitor bar chart graphic inside screen -->
+    <rect x="38" y="26" width="8" height="14" fill="#1e293b"/>
+    <rect x="50" y="18" width="8" height="22" fill="#1e293b"/>
+    <rect x="62" y="22" width="8" height="18" fill="#1e293b"/>
+    <rect x="74" y="14" width="8" height="26" fill="#1e293b"/>
+
+    <!-- Monitor stand -->
+    <line x1="63" y1="50" x2="63" y2="58" stroke="#1e293b" stroke-width="2"/>
+    <line x1="48" y1="58" x2="78" y2="58" stroke="#1e293b" stroke-width="2"/>
+
+    <!-- Label -->
+    <text x="63" y="74" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">Monitoring</text>
+  </g>
+
+  <!-- Arrow from MySQL / App Layer to Monitoring -->
+  <path d="M 660 270 L 745 270 L 745 160 L 780 160" fill="none" stroke="#1e293b" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="685" y="260" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#334155">Security</text>
+
+  <!-- Middle Right: CSV Logs (Cylinder Icon) -->
+  <g transform="translate(775, 290)">
+    <!-- 3D Database / Log Cylinder -->
+    <ellipse cx="48" cy="10" rx="30" ry="8" fill="#ffffff" stroke="#1e293b" stroke-width="1.8"/>
+    <path d="M 18 10 L 18 24 A 30 8 0 0 0 78 24 L 78 10" fill="#ffffff" stroke="#1e293b" stroke-width="1.8"/>
+    <path d="M 18 24 L 18 38 A 30 8 0 0 0 78 38 L 78 24" fill="#ffffff" stroke="#1e293b" stroke-width="1.8"/>
+    <path d="M 18 38 L 18 52 A 30 8 0 0 0 78 52 L 78 38" fill="#ffffff" stroke="#1e293b" stroke-width="1.8"/>
+
+    <!-- Label -->
+    <text x="48" y="74" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">CSV Logs</text>
+  </g>
+
+  <!-- Arrow between MySQL schema and Logs -->
+  <line x1="660" y1="340" x2="785" y2="340" stroke="#1e293b" stroke-width="1.8" marker-end="url(#arrow)" marker-start="url(#arrow-left)"/>
+
+  <!-- Bottom Right: Matplotlib charts (Chart Box Icon) -->
+  <g transform="translate(775, 450)">
+    <!-- Chart Box -->
+    <rect x="16" y="0" width="66" height="52" rx="4" fill="#ffffff" stroke="#1e293b" stroke-width="1.8"/>
+    <line x1="24" y1="42" x2="74" y2="42" stroke="#1e293b" stroke-width="1.4"/>
+    <line x1="24" y1="10" x2="24" y2="42" stroke="#1e293b" stroke-width="1.4"/>
+    
+    <!-- Mini Polyline Chart -->
+    <polyline points="28,36 38,24 50,30 62,14 70,20" fill="none" stroke="#1e293b" stroke-width="2"/>
+
+    <!-- Label -->
+    <text x="49" y="70" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">Matplotlib</text>
+    <text x="49" y="86" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">charts</text>
+  </g>
+
+  <!-- Arrow from Deployment Topology to Matplotlib charts -->
+  <path d="M 590 645 L 720 645 L 720 485 L 785 485" fill="none" stroke="#1e293b" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <text x="690" y="662" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#334155">Optional</text>
+
+  <!-- ==================== 5. DEPLOYMENT TOPOLOGY BOX ==================== -->
+  <g transform="translate(210, 610)">
+    <rect width="400" height="70" rx="8" fill="#ffffff" stroke="#1e293b" stroke-width="1.8"/>
+    <text x="200" y="30" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="800" fill="#0f172a" text-anchor="middle">Deployment Topology</text>
+    <text x="200" y="50" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#1e293b" text-anchor="middle">(Single host: Apache / PHP / MySQL)</text>
+  </g>
+
+  <!-- Connecting Arrows between Deployment Topology and App Layer / MySQL Schema -->
+  <line x1="280" y1="610" x2="280" y2="555" stroke="#1e293b" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <line x1="550" y1="610" x2="550" y2="555" stroke="#1e293b" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- Left Deployment tag with double arrow -->
+  <line x1="140" y1="645" x2="205" y2="645" stroke="#1e293b" stroke-width="1.8" marker-end="url(#arrow)" marker-start="url(#arrow-left)"/>
+  <text x="130" y="649" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="600" fill="#334155" text-anchor="end">Deployment</text>
+
+</svg>

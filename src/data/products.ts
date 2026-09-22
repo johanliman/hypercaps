@@ -7,8 +7,8 @@ export interface Product {
   category: Category;
   description: string;
   specs: string[];
-  color: string; // Used for CSS-based visuals & accent highlights
-  imageUrl: string; // High-resolution product photography
+  color: string;
+  imageUrl: string;
 }
 
 export interface CartItem extends Product {
@@ -16,7 +16,6 @@ export interface CartItem extends Product {
 }
 
 export const products: Product[] = [
-  // --- KEYBOARDS (6 items) ---
   {
     id: 'k1',
     name: 'Hyper-65 Graphite',
@@ -78,7 +77,6 @@ export const products: Product[] = [
     imageUrl: 'https://images.unsplash.com/photo-1697022976768-2fd7f4e4c399?w=800&auto=format&fit=crop&q=80'
   },
 
-  // --- KEYCAPS (6 items) ---
   {
     id: 'c1',
     name: 'Serenity Keycaps',
@@ -140,7 +138,6 @@ export const products: Product[] = [
     imageUrl: 'https://images.unsplash.com/photo-1667296682738-1bdcac5719d3?w=800&auto=format&fit=crop&q=80'
   },
 
-  // --- SWITCHES (6 items) ---
   {
     id: 's1',
     name: 'Linear Velvets',

@@ -1,0 +1,226 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 640" width="1040" height="640">
+  <!-- Solid Canvas Background -->
+  <rect width="1040" height="640" fill="#f8fafc"/>
+  <rect x="15" y="15" width="1010" height="610" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- Header Section -->
+  <g transform="translate(45, 52)">
+    <rect x="0" y="-8" width="6" height="38" fill="#2563eb" rx="3"/>
+    <text x="18" y="10" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#0f172a">Computer Resource Utilization Benchmark</text>
+    <text x="18" y="30" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="500" fill="#64748b">Average &amp; Peak Resource Consumption &bull; Evaluation Period: 29th Sept &ndash; 16th Oct</text>
+
+    <!-- Legend Badges -->
+    <g transform="translate(685, 4)">
+      <rect x="0" y="0" width="115" height="28" rx="14" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1"/>
+      <circle cx="16" cy="14" r="5" fill="#0284c7"/>
+      <text x="30" y="18" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#0369a1">Average Load</text>
+
+      <rect x="125" y="0" width="115" height="28" rx="14" fill="#ffe4e6" stroke="#fecdd3" stroke-width="1"/>
+      <circle cx="141" cy="14" r="5" fill="#e11d48"/>
+      <text x="155" y="18" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#be123c">Peak Load</text>
+    </g>
+  </g>
+
+  <!-- 4 Performance Cards (Grid Layout: 2 x 2) -->
+
+  <!-- CARD 1: CPU Utilization -->
+  <g transform="translate(45, 115)">
+    <rect width="455" height="230" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <rect x="0" y="0" width="455" height="5" fill="#0284c7" rx="2.5"/>
+    
+    <text x="24" y="32" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0f172a">1. CPU Utilization</text>
+    <rect x="355" y="16" width="76" height="22" rx="11" fill="#f1f5f9"/>
+    <text x="393" y="31" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="700" fill="#475569">MAX 100%</text>
+
+    <!-- Numbers -->
+    <text x="24" y="62" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#64748b" letter-spacing="0.5">AVERAGE</text>
+    <text x="24" y="88" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" font-weight="800" fill="#0284c7">18&ndash;28%</text>
+
+    <text x="180" y="62" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#64748b" letter-spacing="0.5">PEAK LOAD</text>
+    <text x="180" y="88" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" font-weight="800" fill="#e11d48">65%</text>
+
+    <text x="320" y="62" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#64748b" letter-spacing="0.5">HEADROOM</text>
+    <text x="320" y="88" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" font-weight="800" fill="#10b981">35%</text>
+
+    <!-- Visual Bar Representation -->
+    <g transform="translate(24, 112)">
+      <rect x="0" y="0" width="407" height="24" rx="6" fill="#f1f5f9"/>
+      
+      <!-- Peak Bar (65% = 264.55 px) -->
+      <rect x="0" y="0" width="264.55" height="24" rx="6" fill="#fca5a5"/>
+      <!-- Avg Bar (28% = 113.96 px) -->
+      <rect x="0" y="0" width="113.96" height="24" rx="6" fill="#0284c7"/>
+
+      <!-- Labels inside bar -->
+      <text x="57" y="16" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">Avg: 23%</text>
+      <text x="200" y="16" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#991b1b">Peak: 65%</text>
+      <text x="335" y="16" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="600" fill="#64748b">Idle Headroom 35%</text>
+    </g>
+
+    <!-- Axis labels -->
+    <text x="24" y="152" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" fill="#94a3b8">0%</text>
+    <text x="125" y="152" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" fill="#94a3b8">25%</text>
+    <text x="227" y="152" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" fill="#94a3b8">50%</text>
+    <text x="329" y="152" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" fill="#94a3b8">75%</text>
+    <text x="418" y="152" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" fill="#94a3b8">100%</text>
+
+    <!-- Divider & Note -->
+    <line x1="24" y1="168" x2="431" y2="168" stroke="#f1f5f9" stroke-width="1.2"/>
+    <g transform="translate(24, 185)">
+      <circle cx="6" cy="6" r="3.5" fill="#f59e0b"/>
+      <text x="16" y="10" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#334155">Operational Note: <tspan font-weight="500" fill="#64748b">Spikes when running PHP+MySQL</tspan></text>
+      <text x="16" y="27" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="500" fill="#64748b">and chart generation workloads.</text>
+    </g>
+  </g>
+
+  <!-- CARD 2: Memory Usage -->
+  <g transform="translate(540, 115)">
+    <rect width="455" height="230" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <rect x="0" y="0" width="455" height="5" fill="#059669" rx="2.5"/>
+    
+    <text x="24" y="32" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0f172a">2. Memory Usage (RAM)</text>
+    <rect x="345" y="16" width="86" height="22" rx="11" fill="#f1f5f9"/>
+    <text x="388" y="31" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="700" fill="#475569">DEV ENV RAM</text>
+
+    <!-- Numbers -->
+    <text x="24" y="62" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#64748b" letter-spacing="0.5">AVERAGE</text>
+    <text x="24" y="88" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" font-weight="800" fill="#059669">2.1&ndash;2.6 GB</text>
+
+    <text x="180" y="62" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#64748b" letter-spacing="0.5">PEAK USAGE</text>
+    <text x="180" y="88" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" font-weight="800" fill="#dc2626">3.4 GB</text>
+
+    <text x="320" y="62" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#64748b" letter-spacing="0.5">HEALTH</text>
+    <text x="320" y="88" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0284c7">STABLE</text>
+
+    <!-- Visual Bar Representation (Scale to 6 GB max) -->
+    <g transform="translate(24, 112)">
+      <rect x="0" y="0" width="407" height="24" rx="6" fill="#f1f5f9"/>
+      
+      <!-- Peak Bar (3.4 / 6.0 * 407 = 230.6 px) -->
+      <rect x="0" y="0" width="230.6" height="24" rx="6" fill="#fecaca"/>
+      <!-- Avg Bar (2.6 / 6.0 * 407 = 176.3 px) -->
+      <rect x="0" y="0" width="176.3" height="24" rx="6" fill="#059669"/>
+
+      <!-- Labels inside bar -->
+      <text x="88" y="16" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">Avg: 2.35 GB</text>
+      <text x="203" y="16" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#991b1b">Peak: 3.4 GB</text>
+    </g>
+
+    <!-- Axis labels -->
+    <text x="24" y="152" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" fill="#94a3b8">0 GB</text>
+    <text x="156" y="152" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" fill="#94a3b8">2.0 GB</text>
+    <text x="290" y="152" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" fill="#94a3b8">4.0 GB</text>
+    <text x="415" y="152" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" fill="#94a3b8">6.0 GB</text>
+
+    <!-- Divider & Note -->
+    <line x1="24" y1="168" x2="431" y2="168" stroke="#f1f5f9" stroke-width="1.2"/>
+    <g transform="translate(24, 185)">
+      <circle cx="6" cy="6" r="3.5" fill="#059669"/>
+      <text x="16" y="10" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#334155">Operational Note: <tspan font-weight="500" fill="#64748b">WAMP + browser tabs +</tspan></text>
+      <text x="16" y="27" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="500" fill="#64748b">phpMyAdmin management sessions.</text>
+    </g>
+  </g>
+
+  <!-- CARD 3: Disk I/O -->
+  <g transform="translate(45, 375)">
+    <rect width="455" height="230" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <rect x="0" y="0" width="455" height="5" fill="#7c3aed" rx="2.5"/>
+    
+    <text x="24" y="32" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0f172a">3. Disk I/O Throughput</text>
+    <rect x="345" y="16" width="86" height="22" rx="11" fill="#f1f5f9"/>
+    <text x="388" y="31" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="700" fill="#475569">STORAGE I/O</text>
+
+    <!-- Numbers -->
+    <text x="24" y="62" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#64748b" letter-spacing="0.5">AVERAGE</text>
+    <text x="24" y="88" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" font-weight="800" fill="#7c3aed">2&ndash;6 MB/s</text>
+
+    <text x="180" y="62" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#64748b" letter-spacing="0.5">PEAK BURST</text>
+    <text x="180" y="88" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" font-weight="800" fill="#ea580c">18 MB/s</text>
+
+    <text x="320" y="62" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#64748b" letter-spacing="0.5">BURST FACTOR</text>
+    <text x="320" y="88" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" font-weight="800" fill="#d97706">4.5&times;</text>
+
+    <!-- Visual Bar Representation (Scale to 24 MB/s max) -->
+    <g transform="translate(24, 112)">
+      <rect x="0" y="0" width="407" height="24" rx="6" fill="#f1f5f9"/>
+      
+      <!-- Peak Bar (18 / 24 * 407 = 305.25 px) -->
+      <rect x="0" y="0" width="305.25" height="24" rx="6" fill="#fed7aa"/>
+      <!-- Avg Bar (6 / 24 * 407 = 101.75 px) -->
+      <rect x="0" y="0" width="101.75" height="24" rx="6" fill="#7c3aed"/>
+
+      <!-- Labels inside bar -->
+      <text x="50" y="16" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">Avg: 4 MB/s</text>
+      <text x="210" y="16" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#9a3412">Peak Burst: 18 MB/s</text>
+    </g>
+
+    <!-- Axis labels -->
+    <text x="24" y="152" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" fill="#94a3b8">0 MB/s</text>
+    <text x="125" y="152" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" fill="#94a3b8">6 MB/s</text>
+    <text x="227" y="152" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" fill="#94a3b8">12 MB/s</text>
+    <text x="325" y="152" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" fill="#94a3b8">18 MB/s</text>
+    <text x="410" y="152" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" fill="#94a3b8">24 MB/s</text>
+
+    <!-- Divider & Note -->
+    <line x1="24" y1="168" x2="431" y2="168" stroke="#f1f5f9" stroke-width="1.2"/>
+    <g transform="translate(24, 185)">
+      <circle cx="6" cy="6" r="3.5" fill="#ea580c"/>
+      <text x="16" y="10" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#334155">Operational Note: <tspan font-weight="500" fill="#64748b">Seeding DB (sync_products.php)</tspan></text>
+      <text x="16" y="27" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="500" fill="#64748b">&amp; exporting logs via phpMyAdmin.</text>
+    </g>
+  </g>
+
+  <!-- CARD 4: Network (localhost) -->
+  <g transform="translate(540, 375)">
+    <rect width="455" height="230" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <rect x="0" y="0" width="455" height="5" fill="#4f46e5" rx="2.5"/>
+    
+    <text x="24" y="32" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0f172a">4. Network (Localhost / Loopback)</text>
+    <rect x="345" y="16" width="86" height="22" rx="11" fill="#f1f5f9"/>
+    <text x="388" y="31" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="700" fill="#475569">127.0.0.1</text>
+
+    <!-- Numbers -->
+    <g transform="translate(24, 0)">
+      <text x="0" y="62" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#64748b" letter-spacing="0.5">AVERAGE</text>
+      <text x="0" y="88" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="22" font-weight="800" fill="#4f46e5">Low <tspan font-size="11" font-weight="600" fill="#64748b">(&sim;0.8M)</tspan></text>
+    </g>
+
+    <g transform="translate(155, 0)">
+      <text x="0" y="62" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#64748b" letter-spacing="0.5">PEAK TRANSFER</text>
+      <text x="0" y="88" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="22" font-weight="800" fill="#be123c">Moderate <tspan font-size="11" font-weight="600" fill="#64748b">(&sim;10M)</tspan></text>
+    </g>
+
+    <g transform="translate(330, 0)">
+      <text x="0" y="62" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#64748b" letter-spacing="0.5">LATENCY</text>
+      <text x="0" y="88" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="22" font-weight="800" fill="#10b981">&lt; 1 ms</text>
+    </g>
+
+    <!-- Visual Bar Representation -->
+    <g transform="translate(24, 112)">
+      <rect x="0" y="0" width="407" height="24" rx="6" fill="#f1f5f9"/>
+      
+      <!-- Peak Bar (Moderate = ~244 px) -->
+      <rect x="0" y="0" width="244" height="24" rx="6" fill="#fbcfe8"/>
+      <!-- Avg Bar (Low = ~80 px) -->
+      <rect x="0" y="0" width="80" height="24" rx="6" fill="#4f46e5"/>
+
+      <!-- Labels inside bar -->
+      <text x="40" y="16" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">Low</text>
+      <text x="160" y="16" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#9d174d">Moderate Peak</text>
+    </g>
+
+    <!-- Axis labels -->
+    <text x="24" y="152" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" fill="#94a3b8">Idle</text>
+    <text x="120" y="152" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" fill="#94a3b8">Low (JSON REST API)</text>
+    <text x="250" y="152" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" fill="#94a3b8">Moderate (Assets/Exports)</text>
+    <text x="410" y="152" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" fill="#94a3b8">High</text>
+
+    <!-- Divider & Note -->
+    <line x1="24" y1="168" x2="431" y2="168" stroke="#f1f5f9" stroke-width="1.2"/>
+    <g transform="translate(24, 185)">
+      <circle cx="6" cy="6" r="3.5" fill="#4f46e5"/>
+      <text x="16" y="10" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#334155">Operational Note: <tspan font-weight="500" fill="#64748b">Static assets +</tspan></text>
+      <text x="16" y="27" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="500" fill="#64748b">phpMyAdmin database transfers.</text>
+    </g>
+  </g>
+</svg>

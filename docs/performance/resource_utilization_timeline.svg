@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 560" width="1040" height="560">
+  <!-- Background -->
+  <rect width="1040" height="560" fill="#f8fafc"/>
+  <rect x="15" y="15" width="1010" height="530" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- Title Section -->
+  <g transform="translate(45, 52)">
+    <rect x="0" y="-8" width="6" height="38" fill="#0284c7" rx="3"/>
+    <text x="18" y="10" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#0f172a">Resource Utilization Trend (Sept 29 &ndash; Oct 16)</text>
+    <text x="18" y="30" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="500" fill="#64748b">Daily Performance Progression &bull; CPU Spikes during DB Seeding, Load Testing &amp; Chart Generation</text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(710, 52)">
+    <line x1="0" y1="12" x2="22" y2="12" stroke="#0284c7" stroke-width="3.5"/>
+    <circle cx="11" cy="12" r="4" fill="#0284c7"/>
+    <text x="28" y="16" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#0369a1">CPU Load (%)</text>
+
+    <line x1="145" y1="12" x2="167" y2="12" stroke="#059669" stroke-width="3" stroke-dasharray="4,3"/>
+    <circle cx="156" cy="12" r="4" fill="#059669"/>
+    <text x="173" y="16" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#065f46">Memory (GB)</text>
+  </g>
+
+  <!-- Average CPU Band (18% - 28%) -->
+  <rect x="75" y="307.0" width="880" height="35.0" fill="#e0f2fe" opacity="0.75"/>
+  <text x="91" y="329.0" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#0284c7">Average CPU Baseline (18&ndash;28%)</text>
+
+  <!-- Horizontal Grid Lines for CPU (Left Y-Axis: 0%, 20%, 40%, 60%, 80%) -->
+  <line x1="75" y1="405.0" x2="955" y2="405.0" stroke="#f1f5f9" stroke-width="1.2"/>
+  <text x="63" y="409.0" text-anchor="end" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#64748b">0%</text>
+  <line x1="75" y1="335.0" x2="955" y2="335.0" stroke="#f1f5f9" stroke-width="1.2"/>
+  <text x="63" y="339.0" text-anchor="end" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#64748b">20%</text>
+  <line x1="75" y1="265.0" x2="955" y2="265.0" stroke="#f1f5f9" stroke-width="1.2"/>
+  <text x="63" y="269.0" text-anchor="end" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#64748b">40%</text>
+  <line x1="75" y1="195.0" x2="955" y2="195.0" stroke="#f1f5f9" stroke-width="1.2"/>
+  <text x="63" y="199.0" text-anchor="end" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#64748b">60%</text>
+  <line x1="75" y1="125.0" x2="955" y2="125.0" stroke="#f1f5f9" stroke-width="1.2"/>
+  <text x="63" y="129.0" text-anchor="end" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#64748b">80%</text>
+  <text x="967" y="409.0" text-anchor="start" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#059669">0.0 GB</text>
+  <text x="967" y="339.0" text-anchor="start" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#059669">1.0 GB</text>
+  <text x="967" y="269.0" text-anchor="start" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#059669">2.0 GB</text>
+  <text x="967" y="199.0" text-anchor="start" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#059669">3.0 GB</text>
+  <text x="967" y="129.0" text-anchor="start" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#059669">4.0 GB</text>
+  <line x1="75.0" y1="405" x2="75.0" y2="125" stroke="#f8fafc" stroke-width="1"/>
+  <text x="75.0" y="427" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="600" fill="#64748b">Sep 29</text>
+  <line x1="126.76470588235294" y1="405" x2="126.76470588235294" y2="125" stroke="#f8fafc" stroke-width="1"/>
+  <text x="126.76470588235294" y="427" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="600" fill="#64748b">Sep 30</text>
+  <line x1="178.52941176470588" y1="405" x2="178.52941176470588" y2="125" stroke="#f8fafc" stroke-width="1"/>
+  <text x="178.52941176470588" y="427" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="600" fill="#64748b">Oct 01</text>
+  <line x1="230.29411764705884" y1="405" x2="230.29411764705884" y2="125" stroke="#f8fafc" stroke-width="1"/>
+  <text x="230.29411764705884" y="427" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="600" fill="#64748b">Oct 02</text>
+  <line x1="282.05882352941177" y1="405" x2="282.05882352941177" y2="125" stroke="#f8fafc" stroke-width="1"/>
+  <text x="282.05882352941177" y="427" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="600" fill="#64748b">Oct 03</text>
+  <line x1="333.8235294117647" y1="405" x2="333.8235294117647" y2="125" stroke="#f8fafc" stroke-width="1"/>
+  <text x="333.8235294117647" y="427" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="600" fill="#64748b">Oct 04</text>
+  <line x1="385.5882352941177" y1="405" x2="385.5882352941177" y2="125" stroke="#f8fafc" stroke-width="1"/>
+  <text x="385.5882352941177" y="427" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="600" fill="#64748b">Oct 05</text>
+  <line x1="437.3529411764706" y1="405" x2="437.3529411764706" y2="125" stroke="#f8fafc" stroke-width="1"/>
+  <text x="437.3529411764706" y="427" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="600" fill="#64748b">Oct 06</text>
+  <line x1="489.11764705882354" y1="405" x2="489.11764705882354" y2="125" stroke="#f8fafc" stroke-width="1"/>
+  <text x="489.11764705882354" y="427" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="600" fill="#64748b">Oct 07</text>
+  <line x1="540.8823529411765" y1="405" x2="540.8823529411765" y2="125" stroke="#f8fafc" stroke-width="1"/>
+  <text x="540.8823529411765" y="427" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="600" fill="#64748b">Oct 08</text>
+  <line x1="592.6470588235294" y1="405" x2="592.6470588235294" y2="125" stroke="#f8fafc" stroke-width="1"/>
+  <text x="592.6470588235294" y="427" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="600" fill="#64748b">Oct 09</text>
+  <line x1="644.4117647058823" y1="405" x2="644.4117647058823" y2="125" stroke="#f8fafc" stroke-width="1"/>
+  <text x="644.4117647058823" y="427" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="600" fill="#64748b">Oct 10</text>
+  <line x1="696.1764705882354" y1="405" x2="696.1764705882354" y2="125" stroke="#f8fafc" stroke-width="1"/>
+  <text x="696.1764705882354" y="427" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="600" fill="#64748b">Oct 11</text>
+  <line x1="747.9411764705883" y1="405" x2="747.9411764705883" y2="125" stroke="#f8fafc" stroke-width="1"/>
+  <text x="747.9411764705883" y="427" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="600" fill="#64748b">Oct 12</text>
+  <line x1="799.7058823529412" y1="405" x2="799.7058823529412" y2="125" stroke="#f8fafc" stroke-width="1"/>
+  <text x="799.7058823529412" y="427" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="600" fill="#64748b">Oct 13</text>
+  <line x1="851.4705882352941" y1="405" x2="851.4705882352941" y2="125" stroke="#f8fafc" stroke-width="1"/>
+  <text x="851.4705882352941" y="427" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="600" fill="#64748b">Oct 14</text>
+  <line x1="903.2352941176471" y1="405" x2="903.2352941176471" y2="125" stroke="#f8fafc" stroke-width="1"/>
+  <text x="903.2352941176471" y="427" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="600" fill="#64748b">Oct 15</text>
+  <line x1="955.0" y1="405" x2="955.0" y2="125" stroke="#f8fafc" stroke-width="1"/>
+  <text x="955.0" y="427" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="600" fill="#64748b">Oct 16</text>
+  <path d="M 75.0,338.5 L 126.8,331.5 L 178.5,328.0 L 230.3,321.0 L 282.1,317.5 L 333.8,223.0 L 385.6,307.0 L 437.4,324.5 L 489.1,310.5 L 540.9,237.0 L 592.6,321.0 L 644.4,314.0 L 696.2,307.0 L 747.9,296.5 L 799.7,177.5 L 851.5,202.0 L 903.2,314.0 L 955.0,328.0 L 955.0,405 L 75.0,405 Z" fill="#f0f9ff" opacity="0.8"/>
+  <path d="M 75.0,338.5 L 126.8,331.5 L 178.5,328.0 L 230.3,321.0 L 282.1,317.5 L 333.8,223.0 L 385.6,307.0 L 437.4,324.5 L 489.1,310.5 L 540.9,237.0 L 592.6,321.0 L 644.4,314.0 L 696.2,307.0 L 747.9,296.5 L 799.7,177.5 L 851.5,202.0 L 903.2,314.0 L 955.0,328.0" fill="none" stroke="#0284c7" stroke-width="3"/>
+  <path d="M 75.0,258.0 L 126.8,251.0 L 178.5,251.0 L 230.3,244.0 L 282.1,237.0 L 333.8,188.0 L 385.6,230.0 L 437.4,237.0 L 489.1,230.0 L 540.9,195.0 L 592.6,230.0 L 644.4,223.0 L 696.2,223.0 L 747.9,209.0 L 799.7,167.0 L 851.5,181.0 L 903.2,237.0 L 955.0,244.0" fill="none" stroke="#059669" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <circle cx="75.0" cy="338.5" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="126.76470588235294" cy="331.5" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="178.52941176470588" cy="328.0" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="230.29411764705884" cy="321.0" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="282.05882352941177" cy="317.5" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="333.8235294117647" cy="223.0" r="5.5" fill="#e11d48" stroke="#ffffff" stroke-width="2"/>
+  <circle cx="385.5882352941177" cy="307.0" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="437.3529411764706" cy="324.5" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="489.11764705882354" cy="310.5" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="540.8823529411765" cy="237.0" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="592.6470588235294" cy="321.0" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="644.4117647058823" cy="314.0" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="696.1764705882354" cy="307.0" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="747.9411764705883" cy="296.5" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="799.7058823529412" cy="177.5" r="5.5" fill="#e11d48" stroke="#ffffff" stroke-width="2"/>
+  <circle cx="851.4705882352941" cy="202.0" r="5.5" fill="#e11d48" stroke="#ffffff" stroke-width="2"/>
+  <circle cx="903.2352941176471" cy="314.0" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="955.0" cy="328.0" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1.5"/>
+
+    <!-- Annotation: DB Seeding -->
+    <g transform="translate(278.8235294117647, 175.0)">
+      <rect x="0" y="0" width="110" height="34" rx="6" fill="#1e293b"/>
+      <polygon points="55,34 50,40 60,40" fill="#1e293b"/>
+      <text x="55" y="14" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#38bdf8">Oct 04: 52% CPU</text>
+      <text x="55" y="27" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9" font-weight="500" fill="#e2e8f0">Initial DB Seeding</text>
+    </g>
+    
+    <!-- Annotation: Peak 65% Chart Gen & Load -->
+    <g transform="translate(729.7058823529412, 125.5)">
+      <rect x="0" y="0" width="140" height="38" rx="6" fill="#be123c"/>
+      <polygon points="70,38 65,44 75,44" fill="#be123c"/>
+      <text x="70" y="15" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#ffffff">Oct 13: PEAK 65% CPU</text>
+      <text x="70" y="29" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="600" fill="#ffe4e6">Chart Gen + MySQL Load</text>
+    </g>
+    
+    <!-- Annotation: Peak RAM 3.4GB -->
+    <g transform="translate(814.7058823529412, 153.0)">
+      <rect x="0" y="0" width="130" height="26" rx="5" fill="#065f46"/>
+      <polygon points="0,13 -6,9 -6,17" fill="#065f46"/>
+      <text x="8" y="17" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#a7f3d0">Peak RAM: 3.4 GB</text>
+    </g>
+    
+    <g transform="translate(45, 475)">
+      <rect width="950" height="46" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+      <g transform="translate(24, 28)">
+        <text font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#1e293b">Testing Observations:</text>
+        <text x="145" y="0" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="500" fill="#475569"><tspan font-weight="700" fill="#0284c7">Routine Baseline:</tspan> 18&ndash;28% CPU &bull; 2.1&ndash;2.6 GB RAM</text>
+        <text x="490" y="0" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="500" fill="#475569"><tspan font-weight="700" fill="#dc2626">Heavy Batches:</tspan> DB sync spikes to 18 MB/s I/O &bull; 65% CPU during chart export</text>
+      </g>
+    </g>
+  </svg>

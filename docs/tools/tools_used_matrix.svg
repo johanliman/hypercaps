@@ -1,0 +1,258 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 892" width="1100" height="892">
+  <!-- Solid Background -->
+  <rect width="1100" height="892" fill="#f8fafc"/>
+  <rect x="15" y="15" width="1070" height="862" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- Title Header -->
+  <g transform="translate(45, 52)">
+    <rect x="0" y="-8" width="6" height="38" fill="#2563eb" rx="3"/>
+    <text x="18" y="10" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#0f172a">Tools Used &amp; Architectural Purpose</text>
+    <text x="18" y="30" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="500" fill="#64748b">Hypercaps Full-Stack E-Commerce Platform &bull; Production Tech Stack &amp; Workflow Utilities</text>
+  </g>
+
+  <!-- Table Header Bar -->
+  <g transform="translate(45, 110)">
+    <rect width="1010" height="42" rx="8" fill="#f1f5f9"/>
+    <text x="24" y="26" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#475569" letter-spacing="0.5">TOOL &amp; TECHNOLOGY</text>
+    <text x="280" y="26" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#475569" letter-spacing="0.5">TIER / CATEGORY</text>
+    <text x="440" y="26" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#475569" letter-spacing="0.5">FUNCTIONAL PURPOSE &amp; ARCHITECTURAL ROLE</text>
+  </g>
+
+  <!-- Rows -->
+  <g transform="translate(45, 155)">
+
+    <g transform="translate(0, 0)">
+      <rect width="1010" height="54" fill="#ffffff"/>
+      <line x1="0" y1="54" x2="1010" y2="54" stroke="#f1f5f9" stroke-width="1"/>
+
+      <!-- Tool Name -->
+      <circle cx="16" cy="27" r="4" fill="#0284c7"/>
+      <text x="28" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">React 18 & TypeScript</text>
+
+      <!-- Category Pill -->
+      <g transform="translate(280, 16)">
+        <rect width="120" height="22" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+        <text x="60" y="15" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#0284c7">Frontend</text>
+      </g>
+
+      <!-- Purpose -->
+      <text x="440" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#334155">Component-based SPA architecture, static type safety, reactive state & client routing</text>
+    </g>
+
+    <g transform="translate(0, 54)">
+      <rect width="1010" height="54" fill="#f8fafc"/>
+      <line x1="0" y1="54" x2="1010" y2="54" stroke="#f1f5f9" stroke-width="1"/>
+
+      <!-- Tool Name -->
+      <circle cx="16" cy="27" r="4" fill="#7c3aed"/>
+      <text x="28" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">Vite 5.4 Build Tool</text>
+
+      <!-- Category Pill -->
+      <g transform="translate(280, 16)">
+        <rect width="120" height="22" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+        <text x="60" y="15" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#7c3aed">Build / Dev</text>
+      </g>
+
+      <!-- Purpose -->
+      <text x="440" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#334155">Lightning-fast HMR dev server, TypeScript compilation & production ES bundling</text>
+    </g>
+
+    <g transform="translate(0, 108)">
+      <rect width="1010" height="54" fill="#ffffff"/>
+      <line x1="0" y1="54" x2="1010" y2="54" stroke="#f1f5f9" stroke-width="1"/>
+
+      <!-- Tool Name -->
+      <circle cx="16" cy="27" r="4" fill="#4f46e5"/>
+      <text x="28" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">PHP 8 (REST API & PDO)</text>
+
+      <!-- Category Pill -->
+      <g transform="translate(280, 16)">
+        <rect width="120" height="22" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+        <text x="60" y="15" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#4f46e5">Backend</text>
+      </g>
+
+      <!-- Purpose -->
+      <text x="440" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#334155">Lightweight JSON endpoints (products/orders) with PDO prepared statements against SQL injection</text>
+    </g>
+
+    <g transform="translate(0, 162)">
+      <rect width="1010" height="54" fill="#f8fafc"/>
+      <line x1="0" y1="54" x2="1010" y2="54" stroke="#f1f5f9" stroke-width="1"/>
+
+      <!-- Tool Name -->
+      <circle cx="16" cy="27" r="4" fill="#059669"/>
+      <text x="28" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">MySQL Relational DB</text>
+
+      <!-- Category Pill -->
+      <g transform="translate(280, 16)">
+        <rect width="120" height="22" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+        <text x="60" y="15" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#059669">Database</text>
+      </g>
+
+      <!-- Purpose -->
+      <text x="440" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#334155">Persistent storage for inventory catalog, serialized specs, orders, and customer records</text>
+    </g>
+
+    <g transform="translate(0, 216)">
+      <rect width="1010" height="54" fill="#ffffff"/>
+      <line x1="0" y1="54" x2="1010" y2="54" stroke="#f1f5f9" stroke-width="1"/>
+
+      <!-- Tool Name -->
+      <circle cx="16" cy="27" r="4" fill="#ea580c"/>
+      <text x="28" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">PHPMailer (SMTP TLS 587)</text>
+
+      <!-- Category Pill -->
+      <g transform="translate(280, 16)">
+        <rect width="120" height="22" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+        <text x="60" y="15" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#ea580c">Backend</text>
+      </g>
+
+      <!-- Purpose -->
+      <text x="440" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#334155">Authenticated SMTP delivery sending branded HTML tax invoices directly to buyers</text>
+    </g>
+
+    <g transform="translate(0, 270)">
+      <rect width="1010" height="54" fill="#f8fafc"/>
+      <line x1="0" y1="54" x2="1010" y2="54" stroke="#f1f5f9" stroke-width="1"/>
+
+      <!-- Tool Name -->
+      <circle cx="16" cy="27" r="4" fill="#0891b2"/>
+      <text x="28" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">Apache & mod_rewrite</text>
+
+      <!-- Category Pill -->
+      <g transform="translate(280, 16)">
+        <rect width="120" height="22" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+        <text x="60" y="15" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#0891b2">Server</text>
+      </g>
+
+      <!-- Purpose -->
+      <text x="440" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#334155">.htaccess URL rewriting, SPA deep-link routing fallback & API reverse proxying</text>
+    </g>
+
+    <g transform="translate(0, 324)">
+      <rect width="1010" height="54" fill="#ffffff"/>
+      <line x1="0" y1="54" x2="1010" y2="54" stroke="#f1f5f9" stroke-width="1"/>
+
+      <!-- Tool Name -->
+      <circle cx="16" cy="27" r="4" fill="#d97706"/>
+      <text x="28" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">Custom Sync (sync_products.php)</text>
+
+      <!-- Category Pill -->
+      <g transform="translate(280, 16)">
+        <rect width="120" height="22" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+        <text x="60" y="15" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#d97706">Automation</text>
+      </g>
+
+      <!-- Purpose -->
+      <text x="440" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#334155">Idempotent DDL migration & automated seeding of 18 artisan keyboard products</text>
+    </g>
+
+    <g transform="translate(0, 378)">
+      <rect width="1010" height="54" fill="#f8fafc"/>
+      <line x1="0" y1="54" x2="1010" y2="54" stroke="#f1f5f9" stroke-width="1"/>
+
+      <!-- Tool Name -->
+      <circle cx="16" cy="27" r="4" fill="#16a34a"/>
+      <text x="28" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">Health Diagnostic (test_db.php)</text>
+
+      <!-- Category Pill -->
+      <g transform="translate(280, 16)">
+        <rect width="120" height="22" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+        <text x="60" y="15" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#16a34a">Diagnostics</text>
+      </g>
+
+      <!-- Purpose -->
+      <text x="440" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#334155">Live environment health check: verifies MySQL connectivity, row counts & SMTP status</text>
+    </g>
+
+    <g transform="translate(0, 432)">
+      <rect width="1010" height="54" fill="#ffffff"/>
+      <line x1="0" y1="54" x2="1010" y2="54" stroke="#f1f5f9" stroke-width="1"/>
+
+      <!-- Tool Name -->
+      <circle cx="16" cy="27" r="4" fill="#2563eb"/>
+      <text x="28" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">Python 3 (scripts/package.py)</text>
+
+      <!-- Category Pill -->
+      <g transform="translate(280, 16)">
+        <rect width="120" height="22" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+        <text x="60" y="15" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#2563eb">DevOps</text>
+      </g>
+
+      <!-- Purpose -->
+      <text x="440" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#334155">Automated deployment packager: merges dist/ and backend/ into upload_to_htdocs.zip</text>
+    </g>
+
+    <g transform="translate(0, 486)">
+      <rect width="1010" height="54" fill="#f8fafc"/>
+      <line x1="0" y1="54" x2="1010" y2="54" stroke="#f1f5f9" stroke-width="1"/>
+
+      <!-- Tool Name -->
+      <circle cx="16" cy="27" r="4" fill="#334155"/>
+      <text x="28" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">Git & GitHub Repository</text>
+
+      <!-- Category Pill -->
+      <g transform="translate(280, 16)">
+        <rect width="120" height="22" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+        <text x="60" y="15" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#334155">VCS</text>
+      </g>
+
+      <!-- Purpose -->
+      <text x="440" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#334155">Distributed version control, branch tracking, atomic commits & cloud backup</text>
+    </g>
+
+    <g transform="translate(0, 540)">
+      <rect width="1010" height="54" fill="#ffffff"/>
+      <line x1="0" y1="54" x2="1010" y2="54" stroke="#f1f5f9" stroke-width="1"/>
+
+      <!-- Tool Name -->
+      <circle cx="16" cy="27" r="4" fill="#0284c7"/>
+      <text x="28" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">VS Code & ESLint</text>
+
+      <!-- Category Pill -->
+      <g transform="translate(280, 16)">
+        <rect width="120" height="22" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+        <text x="60" y="15" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#0284c7">IDE / QA</text>
+      </g>
+
+      <!-- Purpose -->
+      <text x="440" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#334155">Source code authoring, TypeScript intellisense, lint enforcement & refactoring</text>
+    </g>
+
+    <g transform="translate(0, 594)">
+      <rect width="1010" height="54" fill="#f8fafc"/>
+      <line x1="0" y1="54" x2="1010" y2="54" stroke="#f1f5f9" stroke-width="1"/>
+
+      <!-- Tool Name -->
+      <circle cx="16" cy="27" r="4" fill="#be123c"/>
+      <text x="28" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">InfinityFree / cPanel Apache</text>
+
+      <!-- Category Pill -->
+      <g transform="translate(280, 16)">
+        <rect width="120" height="22" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+        <text x="60" y="15" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#be123c">Hosting</text>
+      </g>
+
+      <!-- Purpose -->
+      <text x="440" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#334155">Production cloud web hosting with PHP 8 runtime and hosted MySQL database</text>
+    </g>
+
+    <g transform="translate(0, 648)">
+      <rect width="1010" height="54" fill="#ffffff"/>
+      <line x1="0" y1="54" x2="1010" y2="54" stroke="#f1f5f9" stroke-width="1"/>
+
+      <!-- Tool Name -->
+      <circle cx="16" cy="27" r="4" fill="#64748b"/>
+      <text x="28" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">Chromium DevTools</text>
+
+      <!-- Category Pill -->
+      <g transform="translate(280, 16)">
+        <rect width="120" height="22" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+        <text x="60" y="15" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#64748b">Testing</text>
+      </g>
+
+      <!-- Purpose -->
+      <text x="440" y="31" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#334155">React DOM tree inspection, network payload auditing & responsive viewport testing</text>
+    </g>
+  </g>
+</svg>

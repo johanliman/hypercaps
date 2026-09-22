@@ -10,7 +10,6 @@ export const ProductDetail: React.FC = () => {
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
 
-  // Find the product matching the ID
   const product = useMemo(() => {
     return products.find((p) => p.id === id);
   }, [id]);

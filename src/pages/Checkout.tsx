@@ -71,7 +71,6 @@ export const Checkout: React.FC = () => {
   const [completedOrder, setCompletedOrder] = useState<FinalOrder | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
-  // Shipping Form State
   const [shipping, setShipping] = useState<ShippingInfo>({
     fullName: '',
     email: '',
@@ -85,7 +84,6 @@ export const Checkout: React.FC = () => {
     shippingMethod: 'standard',
   });
 
-  // Payment Form State
   const [payment, setPayment] = useState<PaymentInfo>({
     method: 'card',
     cardName: '',
@@ -97,24 +95,19 @@ export const Checkout: React.FC = () => {
 
   const detectedBrand = detectCardBrand(payment.cardNumber);
 
-  // Validation errors
   const [shippingErrors, setShippingErrors] = useState<Partial<Record<keyof ShippingInfo, string>>>({});
   const [paymentErrors, setPaymentErrors] = useState<Partial<Record<keyof PaymentInfo, string>>>({});
 
-  // Redirect to cart if empty when not on success step
   useEffect(() => {
     if (state.items.length === 0 && step !== 4) {
       navigate('/cart');
     }
   }, [state.items.length, step, navigate]);
 
-  // Shipping Calculations
-  const baseShippingCost = subtotal > 150 ? 0 : 15;
-  const shippingCost = shipping.shippingMethod === 'express' ? baseShippingCost + 20 : baseShippingCost;
+  const shippingCost = shipping.shippingMethod === 'express' ? 20 : 0;
   const estimatedTax = Math.round(subtotal * 0.0775 * 100) / 100;
   const grandTotal = Math.round((subtotal + shippingCost + estimatedTax) * 100) / 100;
 
-  // Validate Step 1
   const validateShipping = (): boolean => {
     const errors: Partial<Record<keyof ShippingInfo, string>> = {};
 
@@ -147,7 +140,6 @@ export const Checkout: React.FC = () => {
     return Object.keys(errors).length === 0;
   };
 
-  // Validate Step 2
   const validatePayment = (): boolean => {
     if (payment.method !== 'card') {
       setPaymentErrors({});
@@ -199,7 +191,6 @@ export const Checkout: React.FC = () => {
   const handlePlaceOrder = async () => {
     setIsSubmitting(true);
 
-    // Freeze all financial values and items BEFORE clearing the cart!
     const frozenSubtotal = subtotal;
     const frozenShippingCost = shippingCost;
     const frozenTax = Math.round(subtotal * 0.0775 * 100) / 100;
@@ -264,7 +255,6 @@ export const Checkout: React.FC = () => {
         return;
       }
     } catch {
-      // Fallback only if local offline development
     }
 
     setCompletedOrder({
@@ -289,7 +279,6 @@ export const Checkout: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Card Number Auto-Formatter (XXXX XXXX XXXX XXXX or Amex XXXX XXXXXX XXXXX)
   const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const raw = e.target.value.replace(/\D/g, '').slice(0, 16);
     let formatted = '';
@@ -307,7 +296,6 @@ export const Checkout: React.FC = () => {
     }
   };
 
-  // Expiry Auto-Formatter (MM/YY)
   const handleExpiryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let raw = e.target.value.replace(/\D/g, '').slice(0, 4);
     if (raw.length >= 3) {
@@ -319,7 +307,6 @@ export const Checkout: React.FC = () => {
     }
   };
 
-  // STEP 4: ORDER CONFIRMATION
   if (step === 4 && completedOrder) {
     return (
       <div className="container checkout-confirmation-page fade-in">
@@ -637,7 +624,7 @@ export const Checkout: React.FC = () => {
                   <div className="radio-card-content">
                     <div className="radio-card-title">
                       <span>Standard Courier</span>
-                      <span className="method-price">{baseShippingCost === 0 ? 'FREE' : `$${baseShippingCost}`}</span>
+                      <span className="method-price">FREE</span>
                     </div>
                     <span className="method-desc">Estimated delivery in 3 – 5 business days</span>
                   </div>
@@ -654,7 +641,7 @@ export const Checkout: React.FC = () => {
                   <div className="radio-card-content">
                     <div className="radio-card-title">
                       <span>Express Priority</span>
-                      <span className="method-price">${baseShippingCost + 20}</span>
+                      <span className="method-price">$20</span>
                     </div>
                     <span className="method-desc">Estimated delivery in 1 – 2 business days with air cargo</span>
                   </div>
