@@ -16,7 +16,6 @@ if (!$data) {
     exit();
 }
 
-// Validate required fields
 $requiredFields = ['fullName', 'email', 'street', 'city', 'state', 'zipCode', 'items'];
 foreach ($requiredFields as $field) {
     if (empty($data[$field])) {
@@ -35,12 +34,10 @@ if (!is_array($data['items']) || count($data['items']) === 0) {
 try {
     $pdo->beginTransaction();
 
-    // Generate Order ID (HC-XXXXXX)
     $orderId = 'HC-' . random_int(100000, 999999);
 
     $subtotal       = isset($data['subtotal']) ? (float)$data['subtotal'] : 0.00;
     $shippingCost   = isset($data['shippingCost']) ? (float)$data['shippingCost'] : 0.00;
-    // 7.75% Tax rate
     $tax            = isset($data['tax']) ? (float)$data['tax'] : round($subtotal * 0.0775, 2);
     $totalCost      = isset($data['totalCost']) ? (float)$data['totalCost'] : round($subtotal + $shippingCost + $tax, 2);
     $shippingMethod = $data['shippingMethod'] ?? 'standard';
@@ -48,7 +45,6 @@ try {
     $customerEmail  = trim($data['email']);
     $customerName   = trim($data['fullName']);
 
-    // Insert Order Record
     $orderStmt = $pdo->prepare("
         INSERT INTO orders (
             id, full_name, email, phone, street, apartment, city, state, zip_code, country,
@@ -78,7 +74,6 @@ try {
         'total_cost'      => $totalCost
     ]);
 
-    // Insert Line Items
     $itemStmt = $pdo->prepare("
         INSERT INTO order_items (order_id, product_id, product_name, price, quantity)
         VALUES (:order_id, :product_id, :product_name, :price, :quantity)
@@ -110,7 +105,6 @@ try {
 
     $pdo->commit();
 
-    // Financial Formatting
     $formattedSubtotal = number_format($subtotal, 2);
     $formattedShipping = $shippingCost == 0 ? 'FREE' : '$' . number_format($shippingCost, 2);
     $formattedTax      = number_format($tax, 2);
@@ -220,12 +214,22 @@ try {
     </html>
     ";
 
-    // Attempt sending email via PHPMailer or standard mail
     $emailSent = false;
     $emailNotice = '';
 
-    $emailConfigPath = __DIR__ . '/../email_config.php';
-    $emailConfig = file_exists($emailConfigPath) ? require $emailConfigPath : ['enabled' => false];
+    $emailConfig = [
+        'enabled'    => true,
+        'host'       => 'smtp.gmail.com',
+        'port'       => 587,
+        'encryption' => 'tls',
+        'username'   => 'support.hypercaps@gmail.com',
+        'password'   => 'adlxmdaunmfkrscg',
+        'from_email' => 'support.hypercaps@gmail.com',
+        'from_name'  => 'Hypercaps Keyboards',
+    ];
+    if (file_exists(__DIR__ . '/../email_config.php')) {
+        $emailConfig = array_merge($emailConfig, require __DIR__ . '/../email_config.php');
+    }
 
     if (!empty($emailConfig['enabled']) && !empty($emailConfig['username']) && $emailConfig['username'] !== 'your_email@gmail.com') {
         require_once __DIR__ . '/../phpmailer/Exception.php';
@@ -245,7 +249,6 @@ try {
             $mail->Port       = (int)($emailConfig['port'] ?? 587);
             $mail->Timeout    = 15;
 
-            // Fix for shared hosting SSL verification (InfinityFree OpenSSL CA bundle)
             $mail->SMTPOptions = [
                 'ssl' => [
                     'verify_peer'       => false,
@@ -257,7 +260,6 @@ try {
             $mail->setFrom($emailConfig['username'], $emailConfig['from_name'] ?? 'Hypercaps');
             $mail->addAddress($customerEmail, $customerName);
 
-            // Also dispatch copy to store owner
             if (!empty($emailConfig['from_email']) && strtolower($emailConfig['from_email']) !== strtolower($customerEmail)) {
                 $mail->addBCC($emailConfig['from_email'], 'Hypercaps Orders');
             }
@@ -275,7 +277,6 @@ try {
             @file_put_contents(__DIR__ . '/../email_error.log', date('[Y-m-d H:i:s] ') . $emailNotice . "\n", FILE_APPEND);
         }
     } else {
-        // Fallback to standard PHP mail()
         $emailHeaders = [
             'MIME-Version: 1.0',
             'Content-type: text/html; charset=UTF-8',

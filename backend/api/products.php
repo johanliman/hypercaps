@@ -13,7 +13,6 @@ try {
 
     $rows = $stmt->fetchAll();
 
-    // Decode JSON specs and map image_url for each product
     $products = array_map(function ($product) {
         $product['price'] = (float)$product['price'];
         $product['imageUrl'] = $product['image_url'] ?? '';
